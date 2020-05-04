@@ -11,5 +11,12 @@ Gruppenmitglieder:
 
 Projektbeschreibung:
 
-Eine virtuelle Lerngruppe / Forum, wo sich Studierende vom gleichen Modul treffen, gemeinsam lernen und sich für die Klausur vorbereiten. In dieser Gruppe können sich die Mitglieder gegenseitig Fragen stellen und Informationen austauschen, außerdem können sie gefundene Quellen miteinander teilen und jederzeit abrufen. Jedes Modul beinhaltet verschiedene Themen die den zu behandelnden Stoff übersichtlicher machen.
-
+* virtuelle Lerngruppe in Form eines Forums zielgerichtet an Studenten
+* zum Austausch von verschiedenen Themen und Modulinhalten
+* zum gemeinsamen Lernen und gegenseitigem Helfen 
+* Studierende können such zusammen für die Klausur vorbereiten, indem sie ein Thema erstellen und da Fragen stellen, Antworten erhalten und Kommentare verfassen
+* außerdem können zum Beispiel externe Quellen und Links geteilt werden
+* man hat die Möglichkeit sich ein Account anzulegen und auf sein eigenes Profil zuzugreifen, sich immer wieder an- und abzumelden
+* das Forum soll ganz minimalistisch gehalten werden, damit alles übersichtlich bleibt
+* dabei können die verschiedenen Module in Kategorien unterteilt werden, welche wiederum Unterkategorien mit spezifischen Themen, angelegt von den Studenten, haben
+* einem Modul kann man beitreten, damit man auch darin Themen erstellen und Nachrichten verfassen kann
