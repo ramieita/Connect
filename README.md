@@ -1,6 +1,6 @@
 # Connect - Projekt 
 
-Gruppenmitglieder:
+**Gruppenmitglieder:**
 *  Burak Kara
 *  Yide Xu
 *  Louis Cheung
@@ -9,7 +9,7 @@ Gruppenmitglieder:
 *  Rami Eita
 *  Muhammet Üresin
 
-Projektbeschreibung:
+**Projektbeschreibung:**
 
 * virtuelle Lerngruppe in Form eines Forums zielgerichtet an Studenten
 * zum Austausch von verschiedenen Themen und Modulinhalten
@@ -24,4 +24,6 @@ Projektbeschreibung:
 * 
 
 **Ressourcen:**
-Trello: https://trello.com/b/po1jlcc6/connect
+* Trello: https://trello.com/b/po1jlcc6/connect
+* gitlab: https://gitlab.beuth-hochschule.de/connect
+* 
