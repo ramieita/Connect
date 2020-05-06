@@ -21,3 +21,7 @@ Projektbeschreibung:
 * das Forum soll ganz minimalistisch gehalten werden, damit alles übersichtlich bleibt
 * dabei können die verschiedenen Module in Kategorien unterteilt werden, welche wiederum Unterkategorien mit spezifischen Themen, haben
 * einem Modul kann man beitreten, damit darin Themen erstellt und Nachrichten verfasst werden können
+* 
+
+**Ressourcen:**
+Trello: https://trello.com/b/po1jlcc6/connect
