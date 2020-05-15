@@ -26,4 +26,5 @@
 **Ressourcen:**
 * Trello: https://trello.com/b/po1jlcc6/connect
 * gitlab: https://gitlab.beuth-hochschule.de/connect
-* 
+* Figma: https://www.figma.com/file/Dn0xKuBjt0nazcIQPDDkn6/connect
+* Goodle Docs: https://docs.google.com/document/d/1IXSsuNR_zBA6WudOtnosUb7M7iyBHklAV41xrLCGTBI
