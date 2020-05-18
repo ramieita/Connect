@@ -52,26 +52,26 @@ router.post("/signup", (req, res) => {
             newUser.password = hash;
             newUser.save().then(() => {
               User.findOne({ username: username }).then((user) => {
-                if (user !== null) {
+                /*if (user !== null) {
                   let jwtData = {
                     id: user._id,
-                  };
+                  };*/
                   // sign jsonwebtoken and set token with users' id
-                  jwt.sign(
+                  /*jwt.sign(
                     { User: jwtData },
                     "secretKey",
                     { algorithm: "HS256" },
                     (err, token) => {
                       res.json({
                         token: token,
-                      });
+                      });*/
                       return res.status(201).json({
                         message: "User signed up successfully.",
                         success: true,
                       });
-                    }
-                  );
-                }
+                    //}
+                  //);
+                //}
               });
             });
           });
@@ -80,7 +80,38 @@ router.post("/signup", (req, res) => {
     });
   });
 });
+
 // /login
-router.post("/login", (req, res) => {});
+router.post("/login", (req, res) => {
+  User.findOne({username: req.body.username, email: req.body.email}, (err, user) => {
+    if(err) {
+      return res.status(500).json({
+        message: "Error caused while logging in"
+      });
+    }
+    if(!user) {
+      return res.status(401).json({
+        message: "User cannont be logged in. Check entered data."
+      });
+    }
+    if(!bcrypt.compareSync(req.body.password, user.password)) {
+      return res.status(401).json({
+        message: "Password is wrong. Login not successful."
+      })
+    }
+    else if(user != null) {
+      let jwData = {
+        id: user._id
+      }
+      jwt.sign({User: jwData}, "secretKey", {algorithm: "HS256"}, (err, token) => {
+        res.status(200).json({
+          message: "Logged in successfully.",
+          token: token,
+          success: true
+        })
+      })
+    }
+  })
+});
 
 module.exports = router;
