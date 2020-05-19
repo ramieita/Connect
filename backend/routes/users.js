@@ -2,6 +2,8 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../modal/User");
+const verifytoken = require("../verification/verifytoken");
+const key = require("../config/keys");
 
 /***** User *****/
 
@@ -103,15 +105,38 @@ router.post("/login", (req, res) => {
       let jwData = {
         id: user._id
       }
-      jwt.sign({User: jwData}, "secretKey", {algorithm: "HS256"}, (err, token) => {
+      jwt.sign({User: jwData}, "secretkey", {algorithm: "HS256"}, (err, token) => {
         res.status(200).json({
           message: "Logged in successfully.",
           token: token,
-          success: true
+          success: true,
+          id: user._id
         })
       })
     }
   })
 });
+
+router.get('/profile', verifytoken, (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+      if(err) {
+          res.status(403).json({
+            message: "Access Forbidden"
+          }); 
+      } 
+      else {
+          User
+          .findOne({_id: auth.User.id})
+          .then((userProfile) => {
+              res.json({
+                  username: userProfile.username,
+                  email: userProfile.email
+              })
+          })
+      }
+  })
+});
+
+
 
 module.exports = router;
