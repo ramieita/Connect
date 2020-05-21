@@ -125,6 +125,35 @@ router.get("/profile", verifytoken, (req, res) => {
   });
 });
 
+// authorization - rolebased [admin / user]
+router.get("/role", verifytoken, (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      User.findOne({ _id: auth.User.id }).then((role) => {
+        if(role.username == 'admin') {
+        res.json({
+          username: role.username,
+          email: role.email,
+          isAdmin: true,
+          message: "You have rights as an admin."
+        });
+      }
+      else {
+        res.json({
+          username: role.username,
+          isAdmin: false,
+          message: "You have no rights."
+        })
+      }
+      });
+    }
+  });
+});
+
 //Edit profile data
 router.put("/profile", verifytoken, (req, res) => {
   jwt.verify(req.token, key.secretKey, (err, auth) => {
@@ -188,5 +217,7 @@ router.delete("/delete/:id", (req, res) => {
       console.log(err);
     });
 });
+
+
 
 module.exports = router;
