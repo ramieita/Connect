@@ -10,11 +10,18 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    owner: {
+    postedBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
+    comments: [{
+        text: String,
+        postedBy: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }],
     date: {
         type: Date,
         default: Date.now()

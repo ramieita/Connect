@@ -5,8 +5,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const keys = require("./config/keys");
 const configDB = require("./config/keys");
+const verifytoken = require('./verification/verifytoken');
 
 const users = require("./routes/users");
+const topics = require("./routes/topics");
+const posts = require("./routes/posts");
 
 app.use(
   bodyParser.urlencoded({
@@ -48,6 +51,9 @@ mongoose
 
 
 app.use('/api/v1/users', users);
+app.use('/api/v1/topic', verifytoken, topics);
+app.use('/api/v1/topic/:topicId/post', verifytoken, posts);
+
 app.use(function(req, res) {
   res.type('text/plain').status(404).send('404 Page Not Found.');
 });
