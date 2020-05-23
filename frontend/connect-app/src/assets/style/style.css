@@ -1,0 +1,104 @@
+/*body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }*/
+  
+  body {
+    background: #7e7e7e;
+  }
+
+  #logo {
+    width: 4%;
+    border-radius: 80%;
+    margin: 1%;
+  }
+  h2 {
+      color: #242424;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+    color: #242424;
+  }
+  #username,
+  #email,
+  #password {
+    width: 35%;
+    margin: 1% auto;
+    padding: 5px;
+  }
+  
+  #input1,
+  #input2,
+  #input3 {
+    background: #fafafa;
+    height: 50px;
+  }
+  
+  #btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    width: 15%;
+  }
+  
+  aside {
+    margin: 2% auto;
+    color: #242424;
+  }
+  
+  #link {
+    font-weight: 800;
+    color: #0b173d;
+    text-decoration: none;
+  }
+
+  #name, #confirm_password {
+    width: 35%;
+    margin: 1% auto;
+    padding: 5px;
+}
+
+#input4, #input5 {
+    background: #fafafa;
+    height: 50px;
+}
+
+p {
+    font-size: 0.9em;
+    color: #242424;
+}
+
+h5 {
+    color: #242424;
+}
+
+  
+  @media only screen and (max-width: 1000px) {
+    #username,
+    #email,
+    #password {
+      width: 90%;
+    }
+    #btn {
+      width: 25%;
+    }
+    #logo {
+      width: 10%;
+    }
+    #name, #confirm_password {
+        width: 90%;
+      }
+  }

@@ -53,11 +53,17 @@ router.post("/signup", (req, res) => {
             newUser.password = hash;
             newUser.save().then(() => {
               User.findOne({ username: username }).then((user) => {
+                let jwData = {
+                  id: user._id,
+                };
+                jwt.sign({User: jwData}, "secretkey", (err, token) => {
                 return res.status(201).json({
                   message: "User signed up successfully.",
-                  success: true,
+                  token: token,
+                  success: true
                 });
               });
+            })
             });
           });
         });
@@ -74,6 +80,7 @@ router.post("/login", (req, res) => {
       if (err) {
         return res.status(500).json({
           message: "Error caused while logging in",
+          success: false
         });
       }
       if (!user) {
