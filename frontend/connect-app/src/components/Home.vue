@@ -18,10 +18,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
  
 h1 {
   font-size: 1.6em;
   color: black;
+}
+
+body {
+  background: #ffffff !important;
 }
 </style>
