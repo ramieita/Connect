@@ -14,9 +14,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    post: [{
+    topic: [{
         type: Schema.Types.ObjectId,
-        ref: 'Post',
+        ref: 'Topic',
         default: []
     }],
     date: {
