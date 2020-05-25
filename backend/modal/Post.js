@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
+    subtopic: {
+        type: Schema.Types.ObjectId,
+        ref: 'Subtopic',
+        required: true 
+    },
     title: {
         type: String,
         required: true 

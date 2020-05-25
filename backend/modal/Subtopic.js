@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const topicSchema = new Schema({
-    name: {
+const subtopicSchema = new Schema({
+    topic: {
+        type: Schema.Types.ObjectId,
+        ref: 'Topic',
+        required: true 
+    },
+    title: {
         type: String,
         required: true 
     },
@@ -11,10 +16,10 @@ const topicSchema = new Schema({
         ref: 'Post',
         default: []
     }],
-    owner:{
+    creator: {
         type: Schema.Types.ObjectId,
-        ref: 'User', 
-        require: true
+        ref: 'User',
+        required: true,
     },
     date: {
         type: Date,
@@ -22,4 +27,4 @@ const topicSchema = new Schema({
     }
 })
 
-module.exports = Topic = mongoose.model('Topic', topicSchema);
+module.exports = Topic = mongoose.model('Subtopic', subtopicSchema);
