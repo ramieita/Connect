@@ -78,13 +78,111 @@ router.post("/checkTopicTitle", verifytoken, (req, res) => {
 });
 
 //get all topics
-router.get("/", (req, res) => {});
+router.get("/", verifytoken, (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      Topic.find()
+        .then((allTopic) => {
+          if (!allTopic) {
+            return res.sendStatus(400).end();
+          }
+          res.send(allTopic);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+});
 
 //get one topic
-router.get("/:topicId", (req, res) => {});
+router.get("/:topicId", (req, res) => {
+  jwt.verify(req.token, "secretkey", (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access forbidden",
+      });
+    } else {
+      var topicId = req.params.topicId;
+      // check if topicId is valid
+      if (ObjectId.isValid(topicId)) {
+        Topic.findOne({ _id: topicId }).then((t) => {
+          if (t !== null) {
+            var postArr = [];
+            //if (postArr.length === t.post.length) {
+            res.json({
+              posts: postArr,
+            });
+            //}
+            for (var i = 0; i < t.post.length; i++) {
+              Post.findOne({ _id: t.post[i] }).then((p) => {
+                if (p !== null) {
+                  postArr.push({
+                    _id: p._id,
+                    title: p.title,
+                    content: p.content,
+                    postedBy: auth.User.id,
+                    date: p.date,
+                  });
+                  if (postArr.length === t.post.length) {
+                    res.json({
+                      posts: postArr,
+                    });
+                  }
+                }
+              });
+            }
+          } else {
+            res.sendStatus(404);
+          }
+        });
+      } else {
+        res.sendStatus(404);
+      }
+    }
+  });
+});
 
 //update topic name
-router.put("/:topicId", (req, res) => {});
+router.put("/:topicId", verifytoken, (req, res) => {
+  jwt.verify(req.token, "secretkey", (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    }
+    else {
+      var topicId = req.params.topicId
+      Topic.findOneAndUpdate(
+        {_id: topicId},
+        { name : req.body.name },
+        {new: true, safe: true}
+        )
+      .then((updated)=>{
+        if(!updated){
+          res.status(400).json({
+            message : " name from the Topic cannot be updated"
+          }).end();
+        } 
+        else{
+          res.status(200).json({
+            message : " name from the Topic is now updated",
+            newName: updated.name,
+            date: updated.date
+          }).end();
+        
+        }
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
+  })
+});
 
 //delete topic
 router.delete("/:topicId", (req, res) => {});
