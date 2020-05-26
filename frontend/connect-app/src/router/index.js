@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Profile from '../components/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,14 @@ Vue.use(VueRouter)
     component: Home,
     meta: {
       auth: true
+    }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: {
+      auth: true 
     }
   }
 ]

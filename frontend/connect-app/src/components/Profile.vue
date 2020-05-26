@@ -3,9 +3,9 @@
     <Navbar />
     <h4>Profile</h4>
     <h6>Username</h6>
-    <p>{{ this.$store.state.userdata.username }}</p>
+    <p>{{ username }}</p>
     <h6>Email</h6>
-    <p>{{ this.$store.state.userdata.email }}</p>
+    <p>{{ email }}</p>
     <button @click="$bvModal.show('modal-scoped')" variant="success">Edit Profile</button>
     <b-modal id="modal-scoped">
       <template>
@@ -26,7 +26,7 @@
 
 <script>
 import Navbar from "./navigation/Navbar";
-export default {
+export default { 
   name: "Profile",
   components: {
     Navbar

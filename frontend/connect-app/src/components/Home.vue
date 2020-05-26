@@ -1,19 +1,18 @@
 <template id="home">
   <div class="home">
+    <Navbar />
     <h1>Welcome to the Homepage</h1>
-    <button @click="logout">Logout</button>
   </div>
 </template>
 
 <script>
+import Navbar from "./navigation/Navbar"
 export default {
-  name: "Home",
-  components: {},
+name: "Home",
+  components: {
+    Navbar
+  },
   methods: {
-    logout() {
-      localStorage.removeItem("jwt");
-      this.$router.push("/login");
-    }
   }
 };
 </script>
