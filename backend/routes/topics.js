@@ -78,7 +78,29 @@ router.post("/checkTopicTitle", verifytoken, (req, res) => {
 });
 
 //get all topics
-router.get("/", (req, res) => {});
+router.get("/", verifytoken, (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      Topic.find()
+        .then((allTopic) => {
+          if (!allTopic) {
+            return res.sendStatus(400).end();
+          }
+          res.json({
+            topics: allTopic
+          })
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+});
+
 
 //get one topic
 router.get("/:topicId", (req, res) => {});

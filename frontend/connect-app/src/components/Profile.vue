@@ -1,35 +1,52 @@
 <template>
-  <div>
-    <Navbar />
-    <h4>Profile</h4>
-    <h6>Username</h6>
-    <p>{{ username }}</p>
-    <h6>Email</h6>
-    <p>{{ email }}</p>
-    <button @click="$bvModal.show('modal-scoped')" variant="success">Edit Profile</button>
-    <b-modal id="modal-scoped">
-      <template>
-        <p>Username:</p>
-        <input type="text" placeholder="Username" v-model="username" />
-        <br />
-        <br />
-        <p>Email:</p>
-        <input type="email" placeholder="Email" v-model="email" />
-      </template>
-      <template v-slot:modal-footer="{ edit, cancel }">
-        <b-button size="sm" variant="success">Edit</b-button>
-        <b-button size="sm" variant="danger" @click="cancel()">Cancel</b-button>
-      </template>
-    </b-modal>
+<div>
+ <Navbar />
+ <div class="oberklasse">
+ <div class="test">
+ <Editprofile /> 
+ </div>
+ <div class="unterklasse">
+  <div class="card">
+  <card class="card-user"   >
+    <div slot="image">
+      <img src="@/assets/img/background.jpg" alt="...">
+    </div>
+    <div>
+      <div class="author">
+        <img class="avatar border-white" src="@/assets/img/icons8.png" alt="...">
+        <h4 class="title">{{username}} 
+          <br>
+            <small>{{email}}</small>
+          
+        </h4>
+      </div>
+      <p class="description text-center">
+        "I like the way you work it
+        <br> I am Student
+        <br> I wanna bag it up"
+      </p>
+    </div>
+    
+   
+  </card>
   </div>
+ </div>
+ </div> 
+ <Footer />
+ </div>
+   
 </template>
 
-<script>
+ <script>
 import Navbar from "./navigation/Navbar";
+import Editprofile from "./Editprofile"
+import Footer from "./Footer"
 export default { 
   name: "Profile",
   components: {
-    Navbar
+    Navbar,
+    Editprofile,
+    Footer
   },
   data() {
     return {
@@ -54,6 +71,8 @@ export default {
   }
 };
 </script>
+<style>
 
-<style scoped>
-</style>
+@import "../assets/style/profile.css";
+
+</style> 

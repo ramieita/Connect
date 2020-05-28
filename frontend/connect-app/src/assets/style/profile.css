@@ -1,0 +1,73 @@
+.oberklasse{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+  }
+  .test{
+    grid-column: 3 / 5 ;
+    grid-row: 2/ 5; 
+    padding-right: 20px;
+    
+  }
+  
+  .unterklasse {
+    grid-column: 2 /  3;
+     grid-row: 1 /  6;
+  }
+  .card-user .image {
+      border-radius: 8px 8px 0 0;
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .card-user .image img {
+      width: 100%;
+  }
+  
+  .card-user .author {
+      text-align: center;
+      text-transform: none;
+      margin-top: -65px;
+  }
+  
+  .card-user .author .title {
+      color: #ccc5b9;
+  }
+  
+  .card-user .author .title small {
+      color: #ccc5b9;
+  }
+  
+  .card-user .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 15px;
+  }
+  
+  .card-user .avatar.border-white {
+      border: 5px solid #FFFFFF;
+  }
+  
+  .card-user .card-title {
+      font-weight: 600;
+      line-height: 24px;
+  }
+  
+  .card-user .description {
+      margin-top: 10px;
+  }
+  
+  .card-user .avatar {
+      height: 190px;
+      width: 190px;
+  }
+  
+  .card-user {
+      padding: 5px 15px 10px;
+      
+  }
+  
+    

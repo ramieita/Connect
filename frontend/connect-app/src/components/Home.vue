@@ -1,7 +1,7 @@
 <template id="home">
   <div class="home">
     <Navbar />
-    <h1>Welcome to the Homepage</h1>
+    <h1>Connect</h1>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import Navbar from "./navigation/Navbar"
 export default {
 name: "Home",
   components: {
-    Navbar
+    Navbar,
   },
   methods: {
   }
@@ -20,8 +20,9 @@ name: "Home",
 <style scoped>
  
 h1 {
-  font-size: 1.6em;
+  font-size: 1.6em; 
   color: black;
+  margin: 1% auto;
 }
 
 body {
