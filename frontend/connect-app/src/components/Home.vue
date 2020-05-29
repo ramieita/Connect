@@ -1,16 +1,19 @@
 <template id="home">
   <div class="home">
     <Navbar />
-    <h1>Connect</h1>
+    <Module />
   </div>
 </template>
 
 <script>
 import Navbar from "./navigation/Navbar"
+
+import Module from "../components/modules/Module"
 export default {
 name: "Home",
   components: {
     Navbar,
+    Module
   },
   methods: {
   }
@@ -20,9 +23,8 @@ name: "Home",
 <style scoped>
  
 h1 {
-  font-size: 1.6em; 
+  font-size: 1.6em;
   color: black;
-  margin: 1% auto;
 }
 
 body {

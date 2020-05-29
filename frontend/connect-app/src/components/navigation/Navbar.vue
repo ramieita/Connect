@@ -16,7 +16,7 @@
 export default {
   name: "Navbar",
   components: {},
-  data() {
+  data() { 
     return {
       username: ""
     };
@@ -49,6 +49,7 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 9999;
 }
 
 #logout{
@@ -58,4 +59,4 @@ export default {
 .nav-item {
   margin-right: 4%;
 }
-</style>
+</style> 
