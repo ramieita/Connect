@@ -245,6 +245,7 @@ router.delete("/:topicId", (req, res) => {
                       .status(200)
                       .json({
                         message: " topic is now deleted",
+                        posts: deleted.post,
                         date: deleted.date
                       })
                       .end();
