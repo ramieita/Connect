@@ -4,6 +4,7 @@ import Home from '../components/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Profile from '../components/Profile.vue'
+import Topic from '../components/topics/Topic.vue'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,15 @@ Vue.use(VueRouter)
     path: '/profile',
     name: 'Profile',
     component: Profile,
+    meta: {
+      auth: true 
+    }
+  },
+  {
+    path: '/module/:topicId',
+    name: 'Topic',
+    props: true,
+    component: Topic,
     meta: {
       auth: true 
     }

@@ -18,7 +18,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title" id="Mathematik">Mathematik I</h5>
+          <router-link to="/module/mathe%201"><h5 class="card-title" id="mathe1">Mathematik I</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -31,7 +31,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Grundlagen der Theoretischen Informatik</h5>
+          <router-link to="/module/gti"><h5 class="card-title" id="gti">Grundlagen der Theoretischen Informatik</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -44,7 +44,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Mediendesign Grundlagen</h5>
+          <router-link to="/module/mediendesign"><h5 class="card-title" id="design">Mediendesign Grundlagen</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -57,7 +57,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Technische Grundlagen der Informatik</h5>
+          <router-link to="/module/tgi"><h5 class="card-title" id="tgi">Technische Grundlagen der Informatik</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -70,7 +70,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Programmierung I</h5>
+          <router-link to="/module/prog%201"><h5 class="card-title" id="prog1">Programmierung I</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -83,7 +83,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Mathematik II</h5>
+          <router-link to="/module/mathe%202"><h5 class="card-title" id="mathe2">Mathematik II</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -95,7 +95,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Algorithmen und Datenstrukturen</h5>
+          <router-link to="/module/algorithmen%20und%20datenstrukturen"><h5 class="card-title" id="algo">Algorithmen und Datenstrukturen</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -107,7 +107,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Datenbanksysteme</h5>
+          <router-link to="/module/datenbanksysteme"><h5 class="card-title" id="db">Datenbanksysteme</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -119,7 +119,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Programmierung II</h5>
+          <router-link to="/module/prog%202"><h5 class="card-title" id="prog2">Programmierung II</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -131,7 +131,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Betriebssysteme</h5>
+          <router-link to="/module/betriebssysteme"><h5 class="card-title" id="mathe1">Betriebssysteme</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -144,7 +144,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Software Engineering I</h5>
+          <router-link to="/module/software%20engineering%201"><h5 class="card-title" id="se1">Software Engineering I</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -156,7 +156,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Computergrafik Grundlagen</h5>
+          <router-link to="/module/computergrafiken"><h5 class="card-title" id="cg">Computergrafik Grundlagen</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -168,7 +168,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Medientechnologien</h5>
+          <router-link to="/module/medientechnologien"><h5 class="card-title" id="medtech">Medientechnologien</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -180,7 +180,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Verteilte Systeme</h5>
+          <router-link to="/module/verteilte%20systeme"><h5 class="card-title" id="mathe1">Verteilte Systeme</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -192,7 +192,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Web Engineering I</h5>
+          <router-link to="/module/web%20engineering%201"><h5 class="card-title" id="prog2">Web Engineering I</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -207,7 +207,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Software-Engineering II</h5>
+          <router-link to="/module/software%20engineering%202"><h5 class="card-title" id="prog2">Software Engineering II</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -219,7 +219,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Web Engineering II</h5>
+          <router-link to="/module/web%20engineering%202"><h5 class="card-title" id="prog2">Web Engineering II</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -231,7 +231,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Human-Computer Interaction</h5>
+          <router-link to="/module/hci"><h5 class="card-title" id="prog2">Human Computer Interaction</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -283,4 +283,10 @@ export default {
 .test {
   padding: 10px;
 }
-</style>
+
+h5:hover, a:hover{
+  list-style: none;
+  text-decoration: none;
+  background: #fffc5e;
+}
+</style> 
