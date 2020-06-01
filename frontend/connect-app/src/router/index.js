@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Profile from '../components/Profile.vue'
 import Topic from '../components/topics/Topic.vue'
+import Post from '../components/posts/Post.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,15 @@ Vue.use(VueRouter)
     name: 'Topic',
     props: true,
     component: Topic,
+    meta: {
+      auth: true 
+    }
+  },
+  {
+    path: '/module/:topicId/:postId',
+    name: 'Post',
+    props: true,
+    component: Post,
     meta: {
       auth: true 
     }

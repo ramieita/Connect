@@ -126,6 +126,7 @@ router.get("/profile", verifytoken, (req, res) => {
         res.json({
           username: userProfile.username,
           email: userProfile.email,
+          id: userProfile._id
         });
       });
     }
