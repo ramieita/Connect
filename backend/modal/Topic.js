@@ -16,6 +16,10 @@ const topicSchema = new Schema({
         ref: 'User', 
         require: true
     },
+    user: {
+        type: String,
+        ref: 'User',
+    },
     date: {
         type: Date,
         default: Date.now()

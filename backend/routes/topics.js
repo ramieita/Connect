@@ -92,7 +92,9 @@ router.get("/", (req, res) => {
           if (!allTopic) {
             return res.sendStatus(400).end();
           }
-          res.send(allTopic);
+          res.json({
+            allTopics: allTopic
+          });
         })
         .catch((err) => {
           console.log(err);
