@@ -8,7 +8,7 @@ const ObjectId = require('mongodb').ObjectID;
 const User = require("../modal/User");
 const Post = require('../modal/Post')
 
-/***** Post *****/
+/***** Posts *****/
 
 //create post
 router.post('/', (req, res) => {
