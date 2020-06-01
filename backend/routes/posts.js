@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     
 })
 
-//get all posts
+//get all posts from one topic
 router.get('/', (req, res) => {
 
 })
@@ -25,13 +25,13 @@ router.get('/:postId', (req, res) => {
 
 })
 
-//update post
+//update one post
 router.put('/:postId', (req, res) => {
 
 })
 
-//delete post
-router.get('/:postId', (req, res) => {
+//delete post (or update to 'Deleted')
+router.put('/:postId', (req, res) => {
 
 })
 
