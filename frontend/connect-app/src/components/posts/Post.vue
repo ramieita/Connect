@@ -2,9 +2,8 @@
   <div>
     <Navbar />Post Page
     <p>List</p>
-    <li v-for="p in posts" :key="p.title">
-      {{ p.title }}
-      </li>
+    <p>Here you can talk about <strong>{{topicName}}</strong> and exchange your ideas about this topic.</p>
+    <li v-for="p in posts" :key="p.title">{{ p.title }}</li>
   </div>
 </template>
 
@@ -24,9 +23,11 @@ export default {
         {
           title: "Hi"
         }
-      ]
+      ], 
+      topicName: window.location.pathname.split("/")[3].replace(/[^A-Za-z]/g, " "),
     };
   },
+
   /*mounted() {
     let url =
       'http://localhost:3000/api/v1/topic/'+ window.location.href.split("/")[5];
