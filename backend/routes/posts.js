@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
                     { new: true, safe: true }
                   );
                   return res.status(201).json({
-                    message: "Topic created successfully",
+                    message: "Post created successfully",
                     postedBy: ObjectId(auth.User.id),
                     topicId: ObjectId(topicId),
                     postTitle: post.title,

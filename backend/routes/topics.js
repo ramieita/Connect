@@ -117,26 +117,33 @@ router.get("/:topicId", (req, res) => {
         Topic.findOne({ _id: topicId }).then((t) => {
           if (t !== null) {
             var postArr = [];
-            //if (postArr.length === t.post.length) {
+            var topics = t.post;
+
+            if (postArr.length === topics.length) {
             res.json({
               posts: postArr,
             });
-            //}
-            for (var i = 0; i < t.post.length; i++) {
-              Post.findOne({ _id: t.post[i] }).then((p) => {
+            console.log("1:" + postArr + topicId)
+            }
+
+            for (var i = 0; i < topics.length; i++) {
+              Post.findOne({ _id: topics[i] }).then((p) => {
                 if (p !== null) {
                   postArr.push({
                     _id: p._id,
                     title: p.title,
-                    content: p.content,
-                    postedBy: auth.User.id,
+                    //content: p.content,
+                    //postedBy: auth.User.id,
                     date: p.date,
                   });
-                  if (postArr.length === t.post.length) {
+                  console.log("2:" + postArr)
+                  if (postArr.length === topics.length) {
                     res.json({
                       posts: postArr,
                     });
+                    console.log("3:" + postArr)
                   }
+                  console.log("4:" + postArr)
                 }
               });
             }
