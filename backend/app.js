@@ -54,6 +54,7 @@ mongoose
 app.use('/api/v1/users', users);
 app.use('/api/v1/topic', verifytoken, topics);
 app.use('/api/v1/topic/:topicId/post', verifytoken, posts);
+app.use('/api/v1/posts', verifytoken, posts);
 //app.use('/api/v1/topic/:topicId/post', verifytoken, posts);
 
 app.use(function(req, res) {

@@ -93,7 +93,7 @@ router.get("/", (req, res) => {
             return res.sendStatus(400).end();
           }
           res.json({
-            allTopics: allTopic
+            allTopics: allTopic,
           });
         })
         .catch((err) => {
@@ -104,14 +104,15 @@ router.get("/", (req, res) => {
 });
 
 //get one topic
-router.get("/:topicId", (req, res) => {
-  jwt.verify(req.token, "secretkey", (err, auth) => {
+/*router.get("/:topicId", (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
     if (err) {
       res.status(403).json({
         message: "Access forbidden",
       });
     } else {
       var topicId = req.params.topicId;
+      console.log(topicId)
       // check if topicId is valid
       if (ObjectId.isValid(topicId)) {
         Topic.findOne({ _id: topicId }).then((t) => {
@@ -121,7 +122,7 @@ router.get("/:topicId", (req, res) => {
 
             if (postArr.length === topics.length) {
             res.json({
-              posts: postArr,
+              posts: postArr
             });
             console.log("1:" + postArr + topicId)
             }
@@ -132,8 +133,8 @@ router.get("/:topicId", (req, res) => {
                   postArr.push({
                     _id: p._id,
                     title: p.title,
-                    //content: p.content,
-                    //postedBy: auth.User.id,
+                    content: p.content,
+                    postedBy: auth.User.id,
                     date: p.date,
                   });
                   console.log("2:" + postArr)
@@ -156,7 +157,62 @@ router.get("/:topicId", (req, res) => {
       }
     }
   });
+});*/
+
+router.get("/:topicId", (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      var topicId = req.params.topicId;
+      if (ObjectId.isValid(topicId)) {
+        Topic.findOne({ _id: topicId }).then((t) => {
+          if (t !== null) {
+            if (permission(t, authData.User.id)) {
+              var isOwner = false;
+              if (t.owner.toString() === authData.User.id) {
+                isOwner = true;
+              }
+
+              var postArr = [];
+              var postings = t.post;
+              if (postArr.length === postings.length) {
+                res.json({
+                  isOwner: isOwner,
+                  postArray: postArr,
+                });
+              }
+              for (var i = 0; i < postings.length; i++) {
+                Post.findOne({ _id: postings[i] }).then((pObj) => {
+                  if (pObj !== null) {
+                    postArr.push({
+                      _id: pObj._id,
+                      title: pObj.title,
+                      date: pObj.date
+                    });
+                    if (postArr.length === postings.length) {
+                      res.json({
+                        isOwner: isOwner,
+                        postArray: postArr,
+                      });
+                    }
+                  }
+                });
+              }
+            } else {
+              res.sendStatus(403);
+            }
+          } else {
+            res.sendStatus(404);
+          }
+        });
+      } else {
+        res.sendStatus(404);
+      }
+    }
+  });
 });
+
 
 //update topic name
 router.put("/:topicId", (req, res) => {
@@ -213,8 +269,6 @@ router.put("/:topicId", (req, res) => {
 
 //delete topic
 
-
-
 router.delete("/:topicId", (req, res) => {
   jwt.verify(req.token, "secretkey", (err, auth) => {
     if (err) {
@@ -228,9 +282,7 @@ router.delete("/:topicId", (req, res) => {
           .then((t) => {
             if (t != null) {
               if (permission(t, auth.User.id)) {
-                Topic.findOneAndDelete(
-                  { _id: topicId }
-                ).then((deleted) => {
+                Topic.findOneAndDelete({ _id: topicId }).then((deleted) => {
                   if (!deleted) {
                     res
                       .status(400)
@@ -238,24 +290,25 @@ router.delete("/:topicId", (req, res) => {
                         message: " error... topic couldnt be deleted",
                       })
                       .end();
-                      for(var i=0; i < t.post.length; i++) {
-                        var postNum = 0;
-                        Post.findOneAndDelete({
-                          _id: t.Post[i].toString()
-                        }).then(() => {
+                    for (var i = 0; i < t.post.length; i++) {
+                      var postNum = 0;
+                      Post.findOneAndDelete({
+                        _id: t.Post[i].toString(),
+                      })
+                        .then(() => {
                           postNum += 1;
-                        }).catch((err) => {
-                          console.log(err);
-                          
                         })
-                      }
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                    }
                   } else {
                     res
                       .status(200)
                       .json({
                         message: " topic is now deleted",
                         posts: deleted.post,
-                        date: deleted.date
+                        date: deleted.date,
                       })
                       .end();
                   }
@@ -285,4 +338,3 @@ function permission(topic, authId) {
 }
 
 module.exports = router;
-

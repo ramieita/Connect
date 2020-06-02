@@ -66,7 +66,28 @@ router.post("/", (req, res) => {
 });
 
 //get all posts from one topic
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      Post.find()
+        .then((posts) => {
+          if (!posts) {
+            return res.sendStatus(400).end();
+          }
+          res.json({
+            posts: posts,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+});
 
 //get one post
 router.get("/:postId", (req, res) => {});
@@ -76,5 +97,13 @@ router.put("/:postId", (req, res) => {});
 
 //delete post (or update to 'Deleted')
 router.put("/:postId", (req, res) => {});
+
+function permission(topic, authId) {
+  if (topic.owner.toString() === authId) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 module.exports = router;
