@@ -33,29 +33,24 @@ router.post("/", (req, res) => {
             });
             newPost.save().then(() => {
               Post.findOne({
-                $and: [{ title: req.body.title }, { postedBy: auth.User.id }],
+                $and: [{ title: req.body.title }, { topic: topicId }],
               }).then((post) => {
-                if (post != null) {
                   Topic.findOneAndUpdate(
                     { _id: topicId },
                     { $push: { Post: ObjectId(post._id) } },
                     { new: true, safe: true }
-                  );
-                  return res.status(201).json({
+                  )
+                  .then(() => {
+                    res.status(201).json({
                     message: "Post created successfully",
                     postedBy: ObjectId(auth.User.id),
                     topicId: ObjectId(topicId),
                     postTitle: post.title,
                     postContent: post.content,
                     date: post.date,
-                    success: true,
+                    success: true
                   });
-                } else {
-                  res.status(404).json({
-                    message: "Could not create the post.",
-                    success: false,
-                  });
-                }
+                })
               });
             });
           }
