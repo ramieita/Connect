@@ -245,7 +245,10 @@ router.get("/:topicId", (req, res) => {
                     if (pObj !== null) {
                       postArr.push({
                         _id: pObj._id,
+                        postedBy: pObj.postedBy,
                         title: pObj.title,
+                        content: pObj.content,
+                        comments: pObj.comments,
                         date: pObj.date,
                       });
                       console.log("after forloop" + postArr)
@@ -361,7 +364,7 @@ router.delete("/:topicId", (req, res) => {
                     for (var i = 0; i < t.post.length; i++) {
                       var postNum = 0;
                       Post.findOneAndDelete({
-                        _id: t.Post[i].toString(),
+                        _id: t.post[i].toString(),
                       })
                         .then(() => {
                           postNum += 1;

@@ -35,22 +35,21 @@ router.post("/", (req, res) => {
               Post.findOne({
                 $and: [{ title: req.body.title }, { topic: topicId }],
               }).then((post) => {
-                  Topic.findOneAndUpdate(
-                    { _id: topicId },
-                    { $push: { Post: ObjectId(post._id) } },
-                    { new: true, safe: true }
-                  )
-                  .then(() => {
-                    res.status(201).json({
+                Topic.findOneAndUpdate(
+                  { _id: topicId },
+                  { $push: { post: ObjectId(post._id) } },
+                  { new: true, safe: true }
+                ).then(() => {
+                  res.status(201).json({
                     message: "Post created successfully",
                     postedBy: ObjectId(auth.User.id),
                     topicId: ObjectId(topicId),
                     postTitle: post.title,
                     postContent: post.content,
                     date: post.date,
-                    success: true
+                    success: true,
                   });
-                })
+                });
               });
             });
           }
@@ -88,13 +87,64 @@ router.get("/", (req, res) => {
 router.get("/:postId", (req, res) => {});
 
 //update one post
-router.put("/:postId", (req, res) => {});
+router.put("/:postId", (req, res) => {
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      var postId = req.params.postId;
+      if (ObjectId.isValid(postId)) {
+        Post.findOne({ _id: postId })
+          .then((p) => {
+            if (p != null) {
+              if (permission(p, auth.User.id)) {
+                Post.findOneAndUpdate(
+                  { _id: postId },
+                  { title: req.body.title, content: req.body.content },
+                  { new: true, safe: true }
+                ).then((updated) => {
+                  if (!updated) {
+                    res
+                      .status(400)
+                      .json({
+                        message: " post cannot be updated",
+                      })
+                      .end();
+                  } else {
+                    res
+                      .status(200)
+                      .json({
+                        message: " post is now updated",
+                        newTitle: updated.title,
+                        newContent: updated.content,
+                        date: updated.date,
+                      })
+                      .end();
+                  }
+                });
+              } else {
+                res.json({
+                  message:
+                    "Cannot update! You are not the owner of this post.",
+                });
+              }
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  });
+});
 
 //delete post (or update to 'Deleted')
 router.put("/:postId", (req, res) => {});
 
-function permission(topic, authId) {
-  if (topic.owner.toString() === authId) {
+function permission(post, authId) {
+  if (post.postedBy.toString() === authId) {
     return true;
   } else {
     return false;
