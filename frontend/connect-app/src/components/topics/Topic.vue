@@ -23,18 +23,16 @@
             <th scope="col">Created by</th>
             <th scope="col">Topic Name</th>
             <th scope="col">Date</th>
-            <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="topic in topics" :key="topic._id">
             <td>{{ topic._id }}</td>
-            <router-link class="link" :to="'/module/{{ topicId }}/' + topic.name">
+            <router-link class="link" :to="'/module/' + topic.name + '/' + topic._id">
               <td>{{ topic.name }}</td>
             </router-link>
 
             <td class="date">{{ topic.date.split("T")[0] }}</td>
-            <td>edits</td>
           </tr>
         </tbody>
       </table>
@@ -187,7 +185,7 @@ h1 {
 }
 .link>td {
   font-weight: bolder;
-  width: 240px;
+  width: 340px;
 }
 
 .table {
@@ -207,5 +205,14 @@ th {
   width: 150px;
   text-align: center;
   padding: 5px;
+}
+#btn{
+  background:#88BBE4;
+  color:rgb(75, 104, 128);
+  border: none;
+}
+#btn:hover{
+    background:rgb(86, 164, 228);
+    color: rgb(255, 255, 255);
 }
 </style>

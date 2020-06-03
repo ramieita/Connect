@@ -1,5 +1,3 @@
-topic.js;
-
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -111,25 +109,17 @@ router.get("/:topicId", (req, res) => {
       res.sendStatus(403);
     } else {
       var topicId = req.params.topicId;
-      console.log(topicId);
-
       if (ObjectId.isValid(topicId)) {
-        console.log("valid --- " + topicId);
-
         Topic.findOne({ _id: topicId }).then((t) => {
           if (t !== null) {
             var postArr = [];
             var postings = t.post;
 
             if (postArr.length === postings.length) {
-              console.log(postArr);
               res.json({
                 postArray: postArr,
               });
-
-              console.log("xxx " + postings.length);
             }
-            console.log("before forloop" + postArr);
             for (var i = 0; i < postings.length; i++) {
               Post.findOne({ _id: postings[i] }).then((pObj) => {
                 if (pObj !== null) {
@@ -141,7 +131,6 @@ router.get("/:topicId", (req, res) => {
                     comments: pObj.comments,
                     date: pObj.date,
                   });
-                  console.log("after forloop" + postArr);
                   if (postArr.length === postings.length) {
                     res.json({
                       postArray: postArr,
