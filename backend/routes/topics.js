@@ -1,3 +1,5 @@
+topic.js;
+
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -93,7 +95,7 @@ router.get("/", (req, res) => {
             return res.sendStatus(400).end();
           }
           res.json({
-            allTopics: allTopic
+            allTopics: allTopic,
           });
         })
         .catch((err) => {
@@ -103,38 +105,46 @@ router.get("/", (req, res) => {
   });
 });
 
-//get one topic
 router.get("/:topicId", (req, res) => {
-  jwt.verify(req.token, "secretkey", (err, auth) => {
+  jwt.verify(req.token, key.secretKey, (err, authData) => {
     if (err) {
-      res.status(403).json({
-        message: "Access forbidden",
-      });
+      res.sendStatus(403);
     } else {
       var topicId = req.params.topicId;
-      // check if topicId is valid
+      console.log(topicId);
+
       if (ObjectId.isValid(topicId)) {
+        console.log("valid --- " + topicId);
+
         Topic.findOne({ _id: topicId }).then((t) => {
           if (t !== null) {
             var postArr = [];
-            //if (postArr.length === t.post.length) {
-            res.json({
-              posts: postArr,
-            });
-            //}
-            for (var i = 0; i < t.post.length; i++) {
-              Post.findOne({ _id: t.post[i] }).then((p) => {
-                if (p !== null) {
+            var postings = t.post;
+
+            if (postArr.length === postings.length) {
+              console.log(postArr);
+              res.json({
+                postArray: postArr,
+              });
+
+              console.log("xxx " + postings.length);
+            }
+            console.log("before forloop" + postArr);
+            for (var i = 0; i < postings.length; i++) {
+              Post.findOne({ _id: postings[i] }).then((pObj) => {
+                if (pObj !== null) {
                   postArr.push({
-                    _id: p._id,
-                    title: p.title,
-                    content: p.content,
-                    postedBy: auth.User.id,
-                    date: p.date,
+                    _id: pObj._id,
+                    postedBy: pObj.postedBy,
+                    title: pObj.title,
+                    content: pObj.content,
+                    comments: pObj.comments,
+                    date: pObj.date,
                   });
-                  if (postArr.length === t.post.length) {
+                  console.log("after forloop" + postArr);
+                  if (postArr.length === postings.length) {
                     res.json({
-                      posts: postArr,
+                      postArray: postArr,
                     });
                   }
                 }
@@ -206,8 +216,6 @@ router.put("/:topicId", (req, res) => {
 
 //delete topic
 
-
-
 router.delete("/:topicId", (req, res) => {
   jwt.verify(req.token, "secretkey", (err, auth) => {
     if (err) {
@@ -221,9 +229,7 @@ router.delete("/:topicId", (req, res) => {
           .then((t) => {
             if (t != null) {
               if (permission(t, auth.User.id)) {
-                Topic.findOneAndDelete(
-                  { _id: topicId }
-                ).then((deleted) => {
+                Topic.findOneAndDelete({ _id: topicId }).then((deleted) => {
                   if (!deleted) {
                     res
                       .status(400)
@@ -231,24 +237,25 @@ router.delete("/:topicId", (req, res) => {
                         message: " error... topic couldnt be deleted",
                       })
                       .end();
-                      for(var i=0; i < t.post.length; i++) {
-                        var postNum = 0;
-                        Post.findOneAndDelete({
-                          _id: t.Post[i].toString()
-                        }).then(() => {
+                    for (var i = 0; i < t.post.length; i++) {
+                      var postNum = 0;
+                      Post.findOneAndDelete({
+                        _id: t.Post[i].toString(),
+                      })
+                        .then(() => {
                           postNum += 1;
-                        }).catch((err) => {
-                          console.log(err);
-                          
                         })
-                      }
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                    }
                   } else {
                     res
                       .status(200)
                       .json({
                         message: " topic is now deleted",
                         posts: deleted.post,
-                        date: deleted.date
+                        date: deleted.date,
                       })
                       .end();
                   }
@@ -278,4 +285,3 @@ function permission(topic, authId) {
 }
 
 module.exports = router;
-
