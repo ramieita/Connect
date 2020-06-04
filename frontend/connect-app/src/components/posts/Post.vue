@@ -3,7 +3,7 @@
     <Navbar />
     <h4>
       Here you can talk about
-      <strong>{{topicName | uppercase}}</strong> and exchange your ideas about this topic.
+      <strong>{{topicName}}</strong> and exchange your ideas about this topic.
     </h4>
     <div class="input-group">
       <div class="input-group-prepend">
@@ -13,7 +13,7 @@
         type="text"
         aria-label="Post name"
         class="form-control notAvailable"
-        id="input"
+        id="title"
         placeholder="title"
       />
     </div>
@@ -21,12 +21,12 @@
       type="textarea"
       aria-label="Post name"
       class="form-control notAvailable"
-      id="textarea"
+      id="content"
       placeholder="content"
     />
-    <button id="btn" type="submit" variant="success">POST</button>
+    <button id="btn" type="submit" variant="success" @click="createPost">POST</button>
 
-    <li v-for="p in posts" :key="p.title">
+    <li v-for="p in posts" :key="p._id">
       <div class="card">
         <div class="card-header">
           <p>posted by: {{ p.postedBy }}</p>
@@ -58,7 +58,8 @@ export default {
       posts: [],
       topicName: window.location.pathname
         .split("/")[2]
-        .replace(/[^A-Za-z]/g, " ")
+        .replace(/[^A-Za-z]/g, " "),
+      success: false
     };
   },
 
@@ -100,6 +101,48 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    createPost() {
+      let title = document.getElementById("title").value;
+      let content = document.getElementById("content").value;
+      if (
+        title === "") {
+        alert("Title should not be empty.");
+      } else {
+        let url =
+          "http://localhost:3000/api/v1/topic/" + window.location.pathname.split("/")[3] +"/post";
+        let headers = {
+          headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
+        };
+        let body = {
+          title: title,
+          content: content
+        };
+        var self = this;
+      self.$http
+        .post(url, body, headers)
+        .then(res => {
+          if (res.data.success === true) {
+            self.success = res.data.success;
+            //inputTitle = res.data.postTitle,
+            //textArea = res.data.postContent
+            console.log(title, content);
+            
+            self.getPosts();
+            console.log(res);
+          } else {
+            console.log("Something went wrong");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      }
+    },
+    alert() {
+      alert( "http://localhost:3000/api/v1/topic/" +
+          window.location.pathname.split("/")[3] +
+          "/post")
     }
   }
 };
@@ -142,7 +185,7 @@ p {
   background: #88bbe4;
   color: rgb(75, 104, 128);
   border: none;
-  margin: .5% auto;
+  margin: 0.5% auto;
 }
 #btn:hover {
   background: rgb(86, 164, 228);

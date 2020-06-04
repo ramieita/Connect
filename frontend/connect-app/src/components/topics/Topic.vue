@@ -23,16 +23,18 @@
             <th scope="col">Created by</th>
             <th scope="col">Topic Name</th>
             <th scope="col">Date</th>
+            <th scope="col">Posts</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="topic in topics" :key="topic._id">
-            <td>{{ topic._id }}</td>
+            <td>{{ topic.owner }}</td>
             <router-link class="link" :to="'/module/' + topic.name + '/' + topic._id">
               <td>{{ topic.name }}</td>
             </router-link>
 
             <td class="date">{{ topic.date.split("T")[0] }}</td>
+            <td>{{ topic.post.length }} posts</td>
           </tr>
         </tbody>
       </table>
@@ -49,23 +51,14 @@ export default {
   },
   data() {
     return {
-      topics: []
-      //updateTable: true
+      topics: [],
+      success: false
       //search: ""
     };
   },
   components: {
     Navbar
   },
-  /*computed: {
-    filterTopics() {
-      let searchTerm = (!this.search.includes("First") || "")
-      return this.topics.filter(function(item) {
-        let title = (item.name || "")
-        return title.indexOf(searchTerm) > -1;
-      });
-    }
-  },*/
   mounted() {
     this.getTopic();
   },
@@ -83,11 +76,11 @@ export default {
           var currentUrl = window.location.pathname.split("/")[2];
           var replace = currentUrl.replace(/[^A-Za-z]/g, "");
           //currentUrl.split("/")
-          console.log(replace);
+          //console.log(replace);
 
           const filt = res.data.allTopics;
           self.topics = filt.filter(f => f.name.includes(replace));
-          console.log(res);
+          //console.log(res);
         })
         .catch(err => {
           console.log(err);
@@ -108,13 +101,13 @@ export default {
         let body = {
           name: input.toLowerCase().trim()
         };
-        //var self = this;
+        var self = this;
         this.$http
           .post(url, body, headers)
           .then(res => {
             if (res.data.success === true) {
-              //this.updateTable = true
-              //self.topics = res.data;
+              self.success = res.data.success;
+              self.getTopic();
               console.log(res);
             } else {
               console.log("Something went wrong");
@@ -183,7 +176,7 @@ h1 {
 .date {
   color: #d9534f;
 }
-.link>td {
+.link > td {
   font-weight: bolder;
   width: 340px;
 }
@@ -206,13 +199,13 @@ th {
   text-align: center;
   padding: 5px;
 }
-#btn{
-  background:#88BBE4;
-  color:rgb(75, 104, 128);
+#btn {
+  background: #88bbe4;
+  color: rgb(75, 104, 128);
   border: none;
 }
-#btn:hover{
-    background:rgb(86, 164, 228);
-    color: rgb(255, 255, 255);
+#btn:hover {
+  background: rgb(86, 164, 228);
+  color: rgb(255, 255, 255);
 }
 </style>
