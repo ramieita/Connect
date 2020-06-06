@@ -52,7 +52,7 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: '/module/:topicName/:topicId',
+    path: '/module/:topicId/:topicName',
     name: 'Post',
     props: true,
     component: Post,

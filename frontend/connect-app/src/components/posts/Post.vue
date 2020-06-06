@@ -12,15 +12,15 @@
       <input
         type="text"
         aria-label="Post name"
-        class="form-control notAvailable"
+        class="form-control"
         id="title"
         placeholder="title"
       />
     </div>
     <textarea
       type="textarea"
-      aria-label="Post name"
-      class="form-control notAvailable"
+      aria-label="Post Content"
+      class="form-control"
       id="content"
       placeholder="content"
     />
@@ -41,7 +41,7 @@
       </div>
     </li>
   </div>
-</template>
+</template> 
 
 <script>
 import Navbar from "../navigation/Navbar";
@@ -57,7 +57,7 @@ export default {
     return {
       posts: [],
       topicName: window.location.pathname
-        .split("/")[2]
+        .split("/")[3]
         .replace(/[^A-Za-z]/g, " "),
       success: false
     };
@@ -88,7 +88,7 @@ export default {
     getPosts() {
       let url =
         "http://localhost:3000/api/v1/topic/" +
-        window.location.pathname.split("/")[3];
+        window.location.pathname.split("/")[2];
       let headers = {
         headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
       };
@@ -105,13 +105,14 @@ export default {
     createPost() {
       let title = document.getElementById("title").value;
       let content = document.getElementById("content").value;
-      if (
-        title === "") {
+      if (title === "") {
         alert("Title should not be empty.");
       } else {
         let url =
-          "http://localhost:3000/api/v1/topic/" + window.location.pathname.split("/")[3] +"/post";
-        let headers = {
+          "http://localhost:3000/api/v1/topic/" +
+          window.location.pathname.split("/")[2] +
+          "/post";
+        var headers = {
           headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
         };
         let body = {
@@ -119,30 +120,32 @@ export default {
           content: content
         };
         var self = this;
-      self.$http
-        .post(url, body, headers)
-        .then(res => {
-          if (res.data.success === true) {
-            self.success = res.data.success;
-            //inputTitle = res.data.postTitle,
-            //textArea = res.data.postContent
-            console.log(title, content);
-            
-            self.getPosts();
-            console.log(res);
-          } else {
-            console.log("Something went wrong");
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        this.$http
+          .post(url, body, headers)
+          .then(res => {
+            if (res.data.success === true) {
+              self.success = res.data.success;
+              //inputTitle = res.data.postTitle,
+              //textArea = res.data.postContent
+              console.log(title, content);
+
+              self.getPosts();
+              console.log(res);
+            } else {
+              console.log("Something went wrong");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
       }
     },
     alert() {
-      alert( "http://localhost:3000/api/v1/topic/" +
+      alert(
+        "http://localhost:3000/api/v1/topic/" +
           window.location.pathname.split("/")[3] +
-          "/post")
+          "/post"
+      );
     }
   }
 };

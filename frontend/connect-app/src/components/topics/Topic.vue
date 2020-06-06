@@ -29,7 +29,7 @@
         <tbody>
           <tr v-for="topic in topics" :key="topic._id">
             <td>{{ topic.owner }}</td>
-            <router-link class="link" :to="'/module/' + topic.name + '/' + topic._id">
+            <router-link class="link" :to="'/module/' + topic._id + '/' + topic.name">
               <td>{{ topic.name }}</td>
             </router-link>
 
