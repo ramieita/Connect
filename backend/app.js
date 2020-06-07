@@ -10,6 +10,7 @@ const verifytoken = require('./verification/verifytoken');
 const users = require("./routes/users");
 const topics = require("./routes/topics");
 const posts = require("./routes/posts");
+const comments = require("./routes/comments");
 //const posts = require("./routes/posts");
 
 app.use(
@@ -54,6 +55,7 @@ mongoose
 app.use('/api/v1/users', users);
 app.use('/api/v1/topic', verifytoken, topics);
 app.use('/api/v1/topic/:topicId/post', verifytoken, posts);
+app.use('/api/v1/topic/:topicId/post/:postId/comment', verifytoken, comments);
 app.use('/api/v1/posts', verifytoken, posts);
 //app.use('/api/v1/topic/:topicId/post', verifytoken, posts);
 

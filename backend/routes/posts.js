@@ -8,6 +8,7 @@ const ObjectId = require("mongodb").ObjectID;
 const User = require("../modal/User");
 const Topic = require("../modal/Topic");
 const Post = require("../modal/Post");
+const Comment = require("../modal/Comment");
 
 /***** Posts *****/
 
@@ -86,6 +87,51 @@ router.get("/", (req, res) => {
 //get one post
 router.get("/:postId", (req, res) => {
   //for each posts get the comments as array
+  jwt.verify(req.token, key.secretKey, (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      var postId = req.params.postId;
+      if (ObjectId.isValid(postId)) {
+        Post.findOne({ _id: postId }).then((p) => {
+          if (p !== null) {
+            var commentArr = [];
+            var comments = p.comments;
+
+            if (commentArr.length === comments.length) {
+              res.json({
+                cArray: commentArr,
+              });
+            }
+            for (var i = 0; i < comments.length; i++) {
+              Comment.findOne({ _id: comments[i] })
+                //.populate("commentedBy", "-password")
+                .then((cObj) => {
+                  if (cObj !== null) {
+                    commentArr.push({
+                      _id: cObj._id,
+                      commentedBy: cObj.commentedBy,
+                      content: cObj.commentContent,
+                      subcomments: cObj.subcomments,
+                      date: cObj.date,
+                    });
+                    if (commentArr.length === comments.length) {
+                      res.json({
+                        cArray: commentArr,
+                      });
+                    }
+                  }
+                });
+            }
+          } else {
+            res.sendStatus(404);
+          }
+        });
+      } else {
+        res.sendStatus(404);
+      }
+    }
+  });
 });
 
 //update one post
