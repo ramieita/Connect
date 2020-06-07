@@ -12,14 +12,14 @@ const Comment = require("../modal/Comment");
 /***** Comments *****/
 
 //create comment
-/*router.post("/", (req, res) => {
+router.post("/", (req, res) => {
   jwt.verify(req.token, key.secretKey, (err, auth) => {
     if (err) {
       res.status(403).json({
         message: "Access Forbidden",
       });
     } else {
-      var postId = req.headers.referer.split("/")[4];
+      var postId = req.headers.referer.split("/")[6];
       if (ObjectId.isValid(postId)) {
         //var topicId = req.body.Topic.id
         Post.findOne({ _id: postId }).then((post) => {
@@ -39,7 +39,7 @@ const Comment = require("../modal/Comment");
               }).then((comment) => {
                 Post.findOneAndUpdate(
                   { _id: postId },
-                  { $push: { comment: ObjectId(comment._id) } },
+                  { $push: { comments: ObjectId(comment._id) } },
                   { new: true, safe: true }
                 ).then(() => {
                   res.status(201).json({
@@ -58,9 +58,9 @@ const Comment = require("../modal/Comment");
       }
     }
   });
-});*/
+});
 
-router.post("/", (req, res) => {
+/*router.post("/", (req, res) => {
   jwt.verify(req.token, key.secretKey, (err, auth) => {
     if (err) {
       res.status(403).json({
@@ -112,7 +112,7 @@ router.post("/", (req, res) => {
       }
     }
   });
-});
+});*/
 
 router.get("/", (req, res) => {
   jwt.verify(req.token, key.secretKey, (err, auth) => {
