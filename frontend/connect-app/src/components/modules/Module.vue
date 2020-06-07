@@ -144,7 +144,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <router-link to="/module/se1"><h5 class="card-title" id="se1">Software Engineering I</h5></router-link>
+          <router-link to="/module/softwareeng1"><h5 class="card-title" id="se1">Software Engineering I</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -192,7 +192,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <router-link to="/module/web1"><h5 class="card-title" id="prog2">Web Engineering I</h5></router-link>
+          <router-link to="/module/webeng1"><h5 class="card-title" id="prog2">Web Engineering I</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -207,7 +207,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <router-link to="/module/se2"><h5 class="card-title" id="prog2">Software Engineering II</h5></router-link>
+          <router-link to="/module/softwareeng2"><h5 class="card-title" id="prog2">Software Engineering II</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>
@@ -219,7 +219,7 @@
       <div class="card">
         <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
         <div class="card-body">
-          <router-link to="/module/web2"><h5 class="card-title" id="prog2">Web Engineering II</h5></router-link>
+          <router-link to="/module/webeng2"><h5 class="card-title" id="prog2">Web Engineering II</h5></router-link>
           <p
             class="card-text"
           >This card has supporting text below as a natural lead-in to additional content.</p>

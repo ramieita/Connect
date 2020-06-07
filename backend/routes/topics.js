@@ -88,6 +88,7 @@ router.get("/", (req, res) => {
       });
     } else {
       Topic.find()
+        .populate("owner", "-password")
         .then((allTopic) => {
           if (!allTopic) {
             return res.sendStatus(400).end();
@@ -121,23 +122,25 @@ router.get("/:topicId", (req, res) => {
               });
             }
             for (var i = 0; i < postings.length; i++) {
-              Post.findOne({ _id: postings[i] }).then((pObj) => {
-                if (pObj !== null) {
-                  postArr.push({
-                    _id: pObj._id,
-                    postedBy: pObj.postedBy,
-                    title: pObj.title,
-                    content: pObj.content,
-                    comments: pObj.comments,
-                    date: pObj.date,
-                  });
-                  if (postArr.length === postings.length) {
-                    res.json({
-                      postArray: postArr,
+              Post.findOne({ _id: postings[i] })
+                .populate("postedBy", "-password")
+                .then((pObj) => {
+                  if (pObj !== null) {
+                    postArr.push({
+                      _id: pObj._id,
+                      postedBy: pObj.postedBy,
+                      title: pObj.title,
+                      content: pObj.content,
+                      comments: pObj.comments,
+                      date: pObj.date,
                     });
+                    if (postArr.length === postings.length) {
+                      res.json({
+                        postArray: postArr,
+                      });
+                    }
                   }
-                }
-              });
+                });
             }
           } else {
             res.sendStatus(404);

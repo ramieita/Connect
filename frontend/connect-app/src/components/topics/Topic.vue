@@ -2,6 +2,7 @@
   <div>
     <Navbar />
     <h1>{{ topicId | uppercase }}</h1>
+    <h3>Please add module name to topic name so everything stays organized.</h3>
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">Create new topic</span>
@@ -12,7 +13,7 @@
         class="form-control notAvailable"
         id="input"
         v-bind:placeholder="topicId"
-        @input="handleInput"
+        @input="handleInput" 
       />
       <b-button id="btn" type="submit" variant="success" @click="createTopic">CREATE</b-button>
     </div>
@@ -28,7 +29,7 @@
         </thead>
         <tbody>
           <tr v-for="topic in topics" :key="topic._id">
-            <td>{{ topic.owner }}</td>
+            <td>{{ topic.owner.username }}</td>
             <router-link class="link" :to="'/module/' + topic._id + '/' + topic.name">
               <td>{{ topic.name }}</td>
             </router-link>
@@ -92,7 +93,7 @@ export default {
         input === "" ||
         document.getElementById("input").classList.contains("notAvailable")
       ) {
-        alert("Topic Name already exists.");
+        alert("Topic Name should not be empty or already exists.");
       } else {
         let url = "http://localhost:3000/api/v1/topic";
         let headers = {

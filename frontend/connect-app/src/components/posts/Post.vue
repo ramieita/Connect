@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    <code @click="goBack">&#060;&#060;&#060; Back to Topics</code><br>
     <h4>
       Here you can talk about
       <strong>{{topicName}}</strong> and exchange your ideas about this topic.
@@ -9,13 +10,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">Create new post</span>
       </div>
-      <input
-        type="text"
-        aria-label="Post name"
-        class="form-control"
-        id="title"
-        placeholder="title"
-      />
+      <input type="text" aria-label="Post name" class="form-control" id="title" placeholder="title" />
     </div>
     <textarea
       type="textarea"
@@ -29,7 +24,7 @@
     <li v-for="p in posts" :key="p._id">
       <div class="card">
         <div class="card-header">
-          <p>posted by: {{ p.postedBy }}</p>
+          <p>posted by: {{ p.postedBy.username }}</p>
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ p.title }}</h5>
@@ -127,8 +122,6 @@ export default {
               self.success = res.data.success;
               //inputTitle = res.data.postTitle,
               //textArea = res.data.postContent
-              console.log(title, content);
-
               self.getPosts();
               console.log(res);
             } else {
@@ -146,6 +139,9 @@ export default {
           window.location.pathname.split("/")[3] +
           "/post"
       );
+    },
+    goBack() {
+      this.$router.go(-1);
     }
   }
 };
@@ -194,6 +190,10 @@ p {
   background: rgb(86, 164, 228);
   color: rgb(255, 255, 255);
 }
+.btn-warning {
+  width: 6%;
+  margin: 0.5%;
+}
 .input-group {
   width: 70%;
   margin: 2% auto;
@@ -201,5 +201,10 @@ p {
 textarea {
   width: 70%;
   margin: auto;
+}
+code{
+  float: left;
+  margin: .5%;
+  cursor: pointer;
 }
 </style>
