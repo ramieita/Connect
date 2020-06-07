@@ -84,7 +84,9 @@ router.get("/", (req, res) => {
 });
 
 //get one post
-router.get("/:postId", (req, res) => {});
+router.get("/:postId", (req, res) => {
+  //for each posts get the comments as array
+});
 
 //update one post
 router.put("/:postId", (req, res) => {
