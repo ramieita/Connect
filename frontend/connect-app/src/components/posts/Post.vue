@@ -1,7 +1,8 @@
 <template>
   <div>
     <Navbar />
-    <code @click="goBack">&#060;&#060;&#060; Back to Topics</code><br>
+    <code @click="goBack">&#060;&#060;&#060; Back to Topics</code>
+    <br />
     <h4>
       Here you can talk about
       <strong>{{topicName}}</strong> and exchange your ideas about this topic.
@@ -20,8 +21,7 @@
       placeholder="content"
     />
     <button id="btn" type="submit" variant="success" @click="createPost">POST</button>
-
-    <li v-for="p in posts" :key="p._id">
+    <li v-for="p in posts" :key="p._id + '-label'">
       <div class="card">
         <div class="card-header">
           <p>posted by: {{ p.postedBy.username }}</p>
@@ -54,28 +54,10 @@ export default {
       topicName: window.location.pathname
         .split("/")[3]
         .replace(/[^A-Za-z]/g, " "),
-      success: false
+      success: false,
+      //url: window.location.pathname
     };
   },
-
-  /*mounted() {
-    let url =
-      'http://localhost:3000/api/v1/topic/'+ window.location.href.split("/")[5];
-      console.log(window.location.href.split("/")[5])
-    let headers = {
-      headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
-    };
-    var self = this;
-    this.$http
-      .get(url, headers)
-      .then(res => {
-        self.posts = res.data.posts;
-        console.log(self.posts)
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }*/
   mounted() {
     this.getPosts();
   },
@@ -133,6 +115,22 @@ export default {
           });
       }
     },
+    /*editPost() {
+      let title = document.getElementById("title").value;
+      let content = document.getElementById("content").value;
+      let url =
+          "http://localhost:3000/api/v1/topic/" +
+          window.location.pathname.split("/")[2] +
+          "/post";
+        var headers = {
+          headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
+        };
+        let body = {
+          title: title,
+          content: content
+        };
+
+    },*/
     alert() {
       alert(
         "http://localhost:3000/api/v1/topic/" +
@@ -202,9 +200,9 @@ textarea {
   width: 70%;
   margin: auto;
 }
-code{
+code {
   float: left;
-  margin: .5%;
+  margin: 0.5%;
   cursor: pointer;
 }
 </style>

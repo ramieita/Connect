@@ -120,6 +120,7 @@ router.put("/:postId", (req, res) => {
                         newTitle: updated.title,
                         newContent: updated.content,
                         date: updated.date,
+                        isOwner: true
                       })
                       .end();
                   }
@@ -128,6 +129,7 @@ router.put("/:postId", (req, res) => {
                 res.json({
                   message:
                     "Cannot update! You are not the owner of this post.",
+                    isOwner: false
                 });
               }
             }
