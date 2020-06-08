@@ -13,7 +13,7 @@
         class="form-control notAvailable"
         id="input"
         v-bind:placeholder="topicId"
-        @input="handleInput" 
+        @input="handleInput"
       />
       <b-button id="btn" type="submit" variant="success" @click="createTopic">CREATE</b-button>
     </div>
@@ -40,6 +40,8 @@
         </tbody>
       </table>
     </div>
+    <img src="/svg/topic.svg" alt="topic" class="img-fluid" />
+    <h6>Open a new topic</h6>
   </div>
 </template>
 
@@ -89,11 +91,15 @@ export default {
     },
     createTopic() {
       let input = document.getElementById("input").value;
+      let currentUrl = window.location.pathname.split("/")[2];
+      let topicName = currentUrl.replace(/[^A-Za-z]/g, "");
       if (
         input === "" ||
         document.getElementById("input").classList.contains("notAvailable")
       ) {
         alert("Topic Name should not be empty or already exists.");
+      } else if (!input.includes(topicName)) {
+        alert("Please enter << " + topicName + " >> in your topic name.");
       } else {
         let url = "http://localhost:3000/api/v1/topic";
         let headers = {
@@ -208,5 +214,27 @@ th {
 #btn:hover {
   background: rgb(86, 164, 228);
   color: rgb(255, 255, 255);
+}
+.img-fluid {
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: 80px;
+  margin-left: -230px;
+  z-index: -2;
+  opacity: 0.75;
+}
+h6 {
+  z-index: -1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: 270px;
+  margin-left: -125px;
+  font-size: 2em;
+  background: blanchedalmond;
+  opacity: 0.85;
 }
 </style>

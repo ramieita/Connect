@@ -35,6 +35,8 @@
         </div>
       </div>
     </li>
+    <img src="/svg/post.svg" alt="post" class="img-fluid" />
+    <h6>Let's discuss!</h6>
   </div>
 </template> 
 
@@ -55,7 +57,8 @@ export default {
         .split("/")[3]
         .replace(/[^A-Za-z]/g, " "),
       success: false,
-      //url: window.location.pathname
+      url: window.location.pathname,
+      isActive: false
     };
   },
   mounted() {
@@ -204,5 +207,25 @@ code {
   float: left;
   margin: 0.5%;
   cursor: pointer;
+}
+.img-fluid{
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: 80px;
+  margin-left: -150px;
+  z-index: -2;
+}
+h6{
+  z-index: -1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: 230px;
+  margin-left: -85px;
+  font-size: 2em;
+  background: blanchedalmond;
 }
 </style>
