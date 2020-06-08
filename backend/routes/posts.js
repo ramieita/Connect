@@ -93,7 +93,8 @@ router.get("/:postId", (req, res) => {
     } else {
       var postId = req.params.postId;
       if (ObjectId.isValid(postId)) {
-        Post.findOne({ _id: postId }).then((p) => {
+        Post.findOne({ _id: postId })
+        .then((p) => {
           if (p !== null) {
             var commentArr = [];
             var comments = p.comments;
@@ -105,7 +106,7 @@ router.get("/:postId", (req, res) => {
             }
             for (var i = 0; i < comments.length; i++) {
               Comment.findOne({ _id: comments[i] })
-                //.populate("commentedBy", "-password")
+                .populate("commentedBy", "-password")
                 .then((cObj) => {
                   if (cObj !== null) {
                     commentArr.push({
