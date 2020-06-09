@@ -137,7 +137,7 @@ router.get("/", (req, res) => {
   });
 });
 
-//put comment
+//put comment route
 router.put("/:commentId", (req, res) => {
   
 })
