@@ -137,4 +137,9 @@ router.get("/", (req, res) => {
   });
 });
 
+//put comment
+router.put("/:commentId", (req, res) => {
+  
+})
+
 module.exports = router;
