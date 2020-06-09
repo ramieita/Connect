@@ -94,40 +94,47 @@ router.get("/:postId", (req, res) => {
       var postId = req.params.postId;
       if (ObjectId.isValid(postId)) {
         Post.findOne({ _id: postId })
-        .then((p) => {
-          if (p !== null) {
-            var commentArr = [];
-            var comments = p.comments;
+          .populate("postedBy", "-password")
+          .then((p) => {
+            if (p !== null) {
+              var commentArr = [];
+              var comments = p.comments;
 
-            if (commentArr.length === comments.length) {
-              res.json({
-                cArray: commentArr,
-              });
-            }
-            for (var i = 0; i < comments.length; i++) {
-              Comment.findOne({ _id: comments[i] })
-                .populate("commentedBy", "-password")
-                .then((cObj) => {
-                  if (cObj !== null) {
-                    commentArr.push({
-                      _id: cObj._id,
-                      commentedBy: cObj.commentedBy,
-                      content: cObj.commentContent,
-                      subcomments: cObj.subcomments,
-                      date: cObj.date,
-                    });
-                    if (commentArr.length === comments.length) {
-                      res.json({
-                        cArray: commentArr,
-                      });
-                    }
-                  }
+              if (commentArr.length === comments.length) {
+                res.json({
+                  postTitle: p.title,
+                  postContent: p.content,
+                  postOwner: p.postedBy,
+                  cArray: commentArr,
                 });
+              }
+              for (var i = 0; i < comments.length; i++) {
+                Comment.findOne({ _id: comments[i] })
+                  .populate("commentedBy", "-password")
+                  .then((cObj) => {
+                    if (cObj !== null) {
+                      commentArr.push({
+                        _id: cObj._id,
+                        commentedBy: cObj.commentedBy,
+                        content: cObj.commentContent,
+                        subcomments: cObj.subcomments,
+                        date: cObj.date,
+                      });
+                      if (commentArr.length === comments.length) {
+                        res.json({
+                          postTitle: p.title,
+                          postContent: p.content,
+                          postOwner: p.postedBy,
+                          cArray: commentArr,
+                        });
+                      }
+                    }
+                  });
+              }
+            } else {
+              res.sendStatus(404);
             }
-          } else {
-            res.sendStatus(404);
-          }
-        });
+          });
       } else {
         res.sendStatus(404);
       }
@@ -175,8 +182,7 @@ router.put("/:postId", (req, res) => {
                 });
               } else {
                 res.json({
-                  message:
-                    "Cannot update! You are not the owner of this post.",
+                  message: "Cannot update! You are not the owner of this post.",
                 });
               }
             }
@@ -201,4 +207,3 @@ function permission(post, authId) {
 }
 
 module.exports = router;
-

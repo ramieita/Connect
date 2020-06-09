@@ -31,7 +31,9 @@
           <br />
           <br />
           <p class="card-text">{{ p.content }}</p>
-          <button href class="btn btn-success">Comment</button>
+          <router-link class="link" :to="`${{url}}` + '/' + p._id">
+          <button href class="btn btn-success">Comments</button>
+          </router-link>
         </div>
       </div>
     </li>
@@ -174,8 +176,8 @@ p {
   list-style: none;
 }
 .btn-success {
-  background: rgb(124, 226, 187);
-  color: rgb(52, 100, 82);
+  background: rgb(61, 172, 129);
+  color: rgb(24, 48, 39);
   border: none;
 }
 .btn-success:hover {

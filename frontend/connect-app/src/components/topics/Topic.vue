@@ -41,7 +41,6 @@
       </table>
     </div>
     <img src="/svg/topic.svg" alt="topic" class="img-fluid" />
-    <h6>Open a new topic</h6>
   </div>
 </template>
 
@@ -92,7 +91,7 @@ export default {
     createTopic() {
       let input = document.getElementById("input").value;
       let currentUrl = window.location.pathname.split("/")[2];
-      let topicName = currentUrl.replace(/[^A-Za-z]/g, "");
+      let topicName = currentUrl.replace(/[^A-Za-z-0-9]/g, "");
       if (
         input === "" ||
         document.getElementById("input").classList.contains("notAvailable")
@@ -192,7 +191,7 @@ h1 {
   border-collapse: collapse;
 }
 th {
-  background-color: #5cb85c;
+  background-color: rgb(61, 172, 129);
   color: white;
 }
 td {
@@ -218,23 +217,11 @@ th {
 .img-fluid {
   width: 300px;
   height: 300px;
-  position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: 80px;
-  margin-left: -230px;
+  margin-top: -30px;
+  margin-left: -120px;
   z-index: -2;
-  opacity: 0.75;
-}
-h6 {
-  z-index: -1;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: 270px;
-  margin-left: -125px;
-  font-size: 2em;
-  background: blanchedalmond;
-  opacity: 0.85;
+  opacity: 0.95;
 }
 </style>

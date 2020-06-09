@@ -1,95 +1,103 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../components/Home.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import Profile from '../components/Profile.vue'
-import Topic from '../components/topics/Topic.vue'
-import Post from '../components/posts/Post.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../components/Home.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import Profile from "../components/Profile.vue";
+import Topic from "../components/topics/Topic.vue";
+import Post from "../components/posts/Post.vue";
+import Comment from "../components/comments/Comment.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-  const routes = [
-    {
-      path: '/login',
-      name: 'Login', 
-      component: Login,
-      meta: {
-        auth: false
-      }
-    },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register,
-      meta: {
-        auth: false
-      }
-    },
+const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/login",
+    name: "Login",
+    component: Login,
+    meta: {
+      auth: false,
+    },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+    meta: {
+      auth: false,
+    },
+  },
+  {
+    path: "/",
+    name: "Home",
     component: Home,
     meta: {
-      auth: true
-    }
+      auth: true,
+    },
   },
   {
-    path: '/profile',
-    name: 'Profile',
+    path: "/profile",
+    name: "Profile",
     component: Profile,
     meta: {
-      auth: true 
-    }
+      auth: true,
+    },
   },
   {
-    path: '/module/:topicId',
-    name: 'Topic',
+    path: "/module/:topicId",
+    name: "Topic",
     props: true,
     component: Topic,
     meta: {
-      auth: true 
-    }
+      auth: true,
+    },
   },
   {
-    path: '/module/:topicId/:topicName',
-    name: 'Post',
+    path: "/module/:topicId/:topicName",
+    name: "Post",
     props: true,
     component: Post,
     meta: {
-      auth: true 
-    }
-  }
-]
+      auth: true,
+    },
+  },
+  {
+    path: "/module/:topicId/:topicName/:postId",
+    name: "Comment",
+    component: Comment,
+    props: true,
+    meta: {
+      auth: true,
+    },
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.auth)) {
-    if(localStorage.getItem('jwt') == null) {
+  if (to.matched.some((record) => record.meta.auth)) {
+    if (localStorage.getItem("jwt") == null) {
       next({
-        path: '/login',
-        params: {nextUrl: to.fullPath} 
-      })
-    }
-    else {
-      next()
-    }
-  }
-  else {
-    if(localStorage.getItem('jwt') != null) {
-    next({
-      path: '/',
-      params: {nextUrl: '/'}
-    })
+        path: "/login",
+        params: { nextUrl: to.fullPath },
+      });
     } else {
-      next()
+      next();
+    }
+  } else {
+    if (localStorage.getItem("jwt") != null) {
+      next({
+        path: "/",
+        params: { nextUrl: "/" },
+      });
+    } else {
+      next();
     }
   }
-})
+});
 
-export default router
+export default router;
