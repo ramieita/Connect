@@ -6,22 +6,20 @@
 </template>
 
 <script>
-import Navbar from "./navigation/Navbar"
+import Navbar from "./navigation/Navbar";
 
-import Module from "../components/modules/Module"
+import Module from "../components/modules/Module";
 export default {
-name: "Home",
+  name: "Home",
   components: {
     Navbar,
     Module
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 
 <style scoped>
- 
 h1 {
   font-size: 1.6em;
   color: black;
@@ -29,5 +27,8 @@ h1 {
 
 body {
   background: #ffffff !important;
+}
+.img-fluid {
+  width: 15px;
 }
 </style>
