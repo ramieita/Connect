@@ -10,12 +10,12 @@
         <blockquote class="blockquote mb-0">
           <p>{{postContent}}</p>
           <br />
-          <footer class="blockquote-footer">
-            posted by
-            <cite title="Source Title">{{postedBy}}</cite>
-          </footer>
         </blockquote>
       </div>
+      <footer class="blockquote-footer">
+        posted by
+        <cite title="Source Title">{{postedBy}}</cite>
+      </footer>
     </div>
 
     <div class="input-group">
@@ -99,9 +99,10 @@ export default {
       } else {
         let url =
           "http://localhost:3000/api/v1/topic/" +
-        window.location.pathname.split("/")[2] +
-        "/post/" +
-        window.location.pathname.split("/")[4] + "/comment";
+          window.location.pathname.split("/")[2] +
+          "/post/" +
+          window.location.pathname.split("/")[4] +
+          "/comment";
         var headers = {
           headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
         };
