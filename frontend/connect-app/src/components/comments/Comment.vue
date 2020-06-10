@@ -2,7 +2,7 @@
   <div>
     <Navbar />
 
-    <div class="card">
+    <div class="card" id="post" @click="goBack">
       <div class="card-header">
         <strong>{{postTitle}}</strong>
       </div>
@@ -36,7 +36,7 @@
       <h6>No comments yet</h6>
     </div>
     <li v-for="c in comments" :key="c._id + '-label'">
-      <div class="card">
+      <div class="card" id="comments">
         <div class="card-header1">
           <p class="commenter">commented by {{ c.commentedBy.username }}</p>
         </div>
@@ -125,6 +125,9 @@ export default {
             console.log(err);
           });
       }
+    },
+    goBack() {
+      this.$router.go(-1);
     }
   }
 };
@@ -135,12 +138,19 @@ export default {
   width: 80%;
   margin: 2% auto;
 }
+#post {
+  box-shadow: 10px 5px 5px rgb(194, 194, 194);
+  cursor: pointer;
+}
 .card-header {
   background: rgb(61, 172, 129);
   color: rgb(20, 61, 46);
 }
 .card-header1 {
   background: #ffd1dc;
+}
+#comments {
+  box-shadow: 4px 2px 2px rgb(194, 194, 194);
 }
 .commenter {
   color: #1b0107;
@@ -155,6 +165,8 @@ p {
   float: left;
   list-style: none;
   margin: 0.5%;
+  width: 90%;
+  text-align: left;
 }
 * {
   list-style: none;

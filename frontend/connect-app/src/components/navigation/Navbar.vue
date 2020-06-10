@@ -38,6 +38,7 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem("jwt");
+      localStorage.removeItem("userId");
       this.$router.push("/login");
     }
   },

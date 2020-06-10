@@ -53,6 +53,7 @@ export default {
         .then(res => {
           if (res.data.success) {
             localStorage.setItem("jwt", res.data.token);
+            localStorage.setItem("userId", res.data.id);
             this.$swal("Connect", "Login was successful.", "success");
             this.$router.push("/");
           }

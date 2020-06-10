@@ -139,7 +139,62 @@ router.get("/", (req, res) => {
 
 //put comment route
 router.put("/:commentId", (req, res) => {
-  
-})
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      var commentId = req.params.commentId;
+      if (ObjectId.isValid(commentId)) {
+        Comment.findOne({ _id: commentId })
+          .then((c) => {
+            if (c != null) {
+              if (permission(c, auth.User.id)) {
+                Comment.findOneAndUpdate(
+                  { _id: commentId },
+                  { commentContent: req.body.commentContent },
+                  { new: true, safe: true }
+                ).then((updated) => {
+                  if (!updated) {
+                    res
+                      .status(400)
+                      .json({
+                        message: " comment cannot be updated",
+                      })
+                      .end();
+                  } else {
+                    res
+                      .status(200)
+                      .json({
+                        message: " comment is now updated",
+                        newComment: updated.commentContent,
+                        date: updated.date,
+                      })
+                      .end();
+                  }
+                });
+              } else {
+                res.json({
+                  message: "Cannot update! You are not the owner of this comment.",
+                });
+              }
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  });
+});
+
+function permission(comment, authId) {
+  if (comment.commentedBy.toString() === authId) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 module.exports = router;

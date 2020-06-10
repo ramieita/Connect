@@ -26,13 +26,16 @@
         <div class="card-header">
           <p>posted by: {{ p.postedBy.username }}</p>
         </div>
+
+        <button class="btn btn-edit" v-if="userId == p.postedBy._id">Edit</button>
+
         <div class="card-body">
           <h5 class="card-title">{{ p.title }}</h5>
           <br />
           <br />
           <p class="card-text">{{ p.content }}</p>
           <router-link class="link" :to="`${{url}}` + '/' + p._id">
-          <button href class="btn btn-success">Comments</button>
+            <button href class="btn btn-success">{{ p.comments.length }} Comments</button>
           </router-link>
         </div>
       </div>
@@ -60,7 +63,8 @@ export default {
         .replace(/[^A-Za-z]/g, " "),
       success: false,
       url: window.location.pathname,
-      isActive: false
+      isActive: false,
+      userId: localStorage.getItem("userId")
     };
   },
   mounted() {
@@ -155,6 +159,9 @@ export default {
   width: 90%;
   margin: 1% auto;
 }
+.card-header {
+  background: rgb(177, 211, 198);
+}
 .btn-success {
   float: right;
 }
@@ -183,6 +190,17 @@ p {
 .btn-success:hover {
   background: rgb(61, 172, 129);
 }
+.btn-edit {
+  background: rgb(219, 166, 122);
+  color: rgb(36, 18, 3);
+  width: 6%;
+  margin: 0.5%;
+  border: none;
+}
+.btn-edit:hover {
+  background: rgb(172, 123, 83);
+  color: rgb(240, 232, 227);
+}
 #btn {
   background: #88bbe4;
   color: rgb(75, 104, 128);
@@ -205,12 +223,16 @@ textarea {
   width: 70%;
   margin: auto;
 }
+.card-text {
+  width: 80%;
+  text-align: left;
+}
 code {
   float: left;
   margin: 0.5%;
   cursor: pointer;
 }
-.img-fluid{
+.img-fluid {
   width: 300px;
   height: 300px;
   position: fixed;
@@ -220,7 +242,7 @@ code {
   margin-left: -150px;
   z-index: -2;
 }
-h6{
+h6 {
   z-index: -1;
   position: fixed;
   top: 50%;
