@@ -18,7 +18,7 @@ const commentSchema = new Schema({
     },
     subcomments: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comment',
+        ref: 'Subcomment',
         default: []
     }],
     date: {
