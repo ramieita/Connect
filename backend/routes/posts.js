@@ -196,7 +196,9 @@ router.put("/:postId", (req, res) => {
 });
 
 //delete post (or update to 'Deleted')
-router.put("/:postId", (req, res) => {});
+router.delete("/:postId", (req, res) => {
+  //delete route
+});
 
 function permission(post, authId) {
   if (post.postedBy.toString() === authId) {
