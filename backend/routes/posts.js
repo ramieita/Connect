@@ -198,6 +198,63 @@ router.put("/:postId", (req, res) => {
 //delete post (or update to 'Deleted')
 router.delete("/:postId", (req, res) => {
   //delete route
+  /*jwt.verify(req.token, "secretkey", (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access Forbidden",
+      });
+    } else {
+      var postId = req.params.postId;
+      if (ObjectId.isValid(postId)) {
+        Post.findOne({ _id: postId })
+          .then((p) => {
+            if (p != null) {
+              if (permission(p, auth.User.id)) {
+                Post.findOneAndDelete({ _id: postId }).then((deleted) => {
+                  if (!deleted) {
+                    res
+                      .status(400)
+                      .json({
+                        message: " error... post couldnt be deleted",
+                      })
+                      .end();
+                    for (var i = 0; i < p.comments.length; i++) {
+                      var commentsNum = 0;
+                      Comment.findOneAndDelete({
+                        _id: p.comments[i].toString(),
+                      })
+                        .then(() => {
+                          commentsNum += 1;
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                    }
+                  } else {
+                    res
+                      .status(200)
+                      .json({
+                        message: " post is now deleted",
+                        deletedComments: deleted.comments,
+                        date: deleted.date,
+                      })
+                      .end();
+                  }
+                });
+              } else {
+                res.json({
+                  message:
+                    "Cannot delete! You are not the owner of this post.",
+                });
+              }
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  });*/
 });
 
 function permission(post, authId) {
