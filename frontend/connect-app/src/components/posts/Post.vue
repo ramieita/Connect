@@ -11,7 +11,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">Create new post</span>
       </div>
-      <input type="text" aria-label="Post name" class="form-control" id="title" placeholder="title" />
+      <input type="text" aria-label="Post name" class="form-control" id="title" placeholder="title"  v-model="title" />
     </div>
     <textarea
       type="textarea"
@@ -19,6 +19,7 @@
       class="form-control"
       id="content"
       placeholder="content"
+      v-model="content"
     />
     <button id="btn" type="submit" variant="success" @click="createPost">POST</button>
     <li v-for="p in posts" :key="p._id + '-label'">
@@ -64,7 +65,9 @@ export default {
       success: false,
       url: window.location.pathname,
       isActive: false,
-      userId: localStorage.getItem("userId")
+      userId: localStorage.getItem("userId"),
+      title: "",
+      content: ""
     };
   },
   mounted() {
@@ -111,6 +114,8 @@ export default {
           .then(res => {
             if (res.data.success === true) {
               self.success = res.data.success;
+              self.title = "";
+              self.content = ""
               //inputTitle = res.data.postTitle,
               //textArea = res.data.postContent
               self.getPosts();

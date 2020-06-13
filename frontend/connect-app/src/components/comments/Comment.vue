@@ -28,6 +28,7 @@
         class="form-control"
         id="comment"
         placeholder="comment"
+        v-model="comment"
       />
       <button id="btn" type="submit" variant="success" @click="createComment">COMMENT</button>
     </div>
@@ -63,7 +64,8 @@ export default {
       comments: [],
       postTitle: "",
       postContent: "",
-      postedBy: ""
+      postedBy: "",
+      comment: ""
     };
   },
   mounted() {
@@ -115,6 +117,7 @@ export default {
           .then(res => {
             if (res.data.success === true) {
               self.success = res.data.success;
+              self.comment = "";
               self.getComments();
               console.log(res);
             } else {
