@@ -11,7 +11,14 @@
       <div class="input-group-prepend">
         <span class="input-group-text">Create new post</span>
       </div>
-      <input type="text" aria-label="Post name" class="form-control" id="title" placeholder="title"  v-model="title" />
+      <input
+        type="text"
+        aria-label="Post name"
+        class="form-control"
+        id="title"
+        placeholder="title"
+        v-model="title"
+      />
     </div>
     <textarea
       type="textarea"
@@ -28,7 +35,9 @@
           <p>posted by: {{ p.postedBy.username }}</p>
         </div>
 
-        <button class="btn btn-edit" v-if="userId == p.postedBy._id">Edit</button>
+        <router-link class="link" :to="`${{url}}` + '/' + p._id">
+          <button class="btn btn-edit" v-if="userId == p.postedBy._id">Edit</button>
+        </router-link>
 
         <div class="card-body">
           <h5 class="card-title">{{ p.title }}</h5>
@@ -115,7 +124,7 @@ export default {
             if (res.data.success === true) {
               self.success = res.data.success;
               self.title = "";
-              self.content = ""
+              self.content = "";
               //inputTitle = res.data.postTitle,
               //textArea = res.data.postContent
               self.getPosts();
@@ -197,9 +206,10 @@ p {
 }
 .btn-edit {
   background: rgb(219, 166, 122);
-  color: rgb(36, 18, 3);
+  color: rgb(80, 72, 66);
   width: 6%;
   margin: 0.5%;
+  float: left;
   border: none;
 }
 .btn-edit:hover {
