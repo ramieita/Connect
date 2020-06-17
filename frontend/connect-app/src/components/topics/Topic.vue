@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="topic in topics" :key="topic._id">
+          <tr v-for="topic in sortByPosts" :key="topic._id">
             <td>{{ topic.owner.username }}</td>
             <router-link class="link" :to="'/module/' + topic._id + '/' + topic.name">
               <td>{{ topic.name }}</td>
@@ -57,6 +57,21 @@ export default {
       success: false
       //search: ""
     };
+  },
+  computed: {
+    sortByPosts: function() {
+      let topicCopy = [...this.topics]
+      function compare(t1, t2) {
+        if(t1.post.length > t2.post.length) {
+          return -1;
+        }
+        if(t1.post.length < t2.post.length) {
+          return 1
+        }
+        return 0
+      }
+      return topicCopy.sort(compare)
+    }
   },
   components: {
     Navbar
