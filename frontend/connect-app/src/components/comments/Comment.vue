@@ -2,19 +2,21 @@
   <div>
     <Navbar />
 
-    <div class="card" id="post" @click="goBack">
+    <div class="card" id="post">
       <div class="card-header">
-        <strong>{{postTitle}}</strong>
+        <input type="text" v-model="postTitle" id="title" :class="{view: userId !== postOwner}" :disabled="userId !== postOwner"/>
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0">
-          <p>{{postContent}}</p>
+        <textarea type="text" v-model="postContent" id="content" :class="{view: userId !== postOwner}" :disabled="userId !== postOwner"/>
           <br />
         </blockquote>
       </div>
+      <button @click="editPost" v-if="userId == postOwner" type="submit" variant="success" id="editbtn">Edit</button>
       <footer class="blockquote-footer">
         posted by
         <cite title="Source Title">{{postedBy}}</cite>
+        <cite v-if="edited"><i> --- edited ---</i></cite>
       </footer>
     </div>
 
@@ -65,7 +67,10 @@ export default {
       postTitle: "",
       postContent: "",
       postedBy: "",
-      comment: ""
+      postOwner: "",
+      comment: "",
+      edited: false,
+      userId: localStorage.getItem("userId")
     };
   },
   mounted() {
@@ -88,6 +93,7 @@ export default {
           self.postTitle = res.data.postTitle;
           self.postContent = res.data.postContent;
           self.postedBy = res.data.postOwner.username;
+          self.postOwner = res.data.postOwner._id;
           self.comments = res.data.cArray;
         })
         .catch(err => {
@@ -128,6 +134,30 @@ export default {
             console.log(err);
           });
       }
+    },
+    editPost() {
+      let title = document.getElementById("title").value;
+      let content = document.getElementById("content").value;
+      let url =
+          "http://localhost:3000/api/v1/topic/" +
+          window.location.pathname.split("/")[2] +
+          "/post/" + window.location.pathname.split("/")[4];
+        var headers = {
+          headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
+        };
+        let body = {
+          title: title,
+          content: content
+        };
+      this.$http.put(url,body,headers)
+      .then(res => {
+        alert("Post updated");
+        this.edited = true;
+        console.log(res);     
+      })
+      .catch(err => {
+        console.log(err)
+      })
     },
     goBack() {
       this.$router.go(-1);
@@ -190,6 +220,13 @@ footer {
   background: rgb(86, 164, 228);
   color: rgb(255, 255, 255);
 }
+#editbtn{
+  background: #f0ad4e;
+  color: #463115;
+  border: none;
+  width: 8%;
+  margin: .5%;
+}
 .img-fluid {
   width: 300px;
   height: 300px;
@@ -209,5 +246,23 @@ h6 {
   margin-left: -120px;
   font-size: 2em;
   background: blanchedalmond;
+}
+textarea{
+  width: 90%;
+  float: left;
+}
+.view{
+  border-color: transparent;
+  background-color: initial;
+}
+#title{
+  width: 90%;
+  float: left;
+  background-color: rgb(70, 202, 151);
+  border-color: rgb(29, 83, 62);
+  padding: 8px;
+}
+#content{
+  padding: 8px;
 }
 </style>

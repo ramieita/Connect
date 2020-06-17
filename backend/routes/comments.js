@@ -189,6 +189,10 @@ router.put("/:commentId", (req, res) => {
   });
 });
 
+router.delete('/:commentId', (req, res) => {
+  //delete comment
+})
+
 function permission(comment, authId) {
   if (comment.commentedBy.toString() === authId) {
     return true;
