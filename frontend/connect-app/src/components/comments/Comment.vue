@@ -16,6 +16,7 @@
       <footer class="blockquote-footer">
         posted by
         <cite title="Source Title">{{postedBy}}</cite>
+        <cite v-if="edited"><i> --- edited ---</i></cite>
       </footer>
     </div>
 
@@ -68,6 +69,7 @@ export default {
       postedBy: "",
       postOwner: "",
       comment: "",
+      edited: false,
       userId: localStorage.getItem("userId")
     };
   },
@@ -150,6 +152,7 @@ export default {
       this.$http.put(url,body,headers)
       .then(res => {
         alert("Post updated");
+        this.edited = true;
         console.log(res);     
       })
       .catch(err => {
