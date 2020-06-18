@@ -1,5 +1,7 @@
 <template>
+<div>
   <div class ="body">
+    
     <h2>
       <strong>Connect</strong>
       <br />- simplify your student life -
@@ -28,12 +30,22 @@
       New to Connect?
       <router-link id="link" to="/register">SIGN UP</router-link>
     </aside>
+    </div>
+    <Matrial/>
+    <Team />
   </div>
+  
 </template>
 
 <script>
+import Team from './Team'
+import Matrial from "./Matrial"
 export default {
   name: "Login",
+  components:    {
+  Team,
+  Matrial
+  },
   data() {
     return {
       username: "",
@@ -69,6 +81,7 @@ export default {
 
 <style scoped>
 @import "../assets/style/style.css";
+@import "../assets/style/Matrila.css";
 .body {
   padding: 40px;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);

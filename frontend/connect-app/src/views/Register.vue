@@ -41,12 +41,21 @@
       </aside>
       <p>By continuing, you agree to our User Agreement and Privacy Policy</p>
     </div>
+  <Matrial/>
+  <Team/>
   </div>
 </template>
 
 <script>
+import Team from "./Team"
+import Matrial from "./Matrial"
 export default {
+  
   name: "Register",
+  components: {
+   Team,
+   Matrial
+  },
   data() {
     return {
       name: "",
@@ -85,6 +94,7 @@ export default {
 
 <style scoped>
 @import "../assets/style/style.css";
+@import "../assets/style/Matrila.css";
 .body {
   padding: 35px;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
