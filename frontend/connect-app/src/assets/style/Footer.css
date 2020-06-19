@@ -11,13 +11,13 @@
     
 }
 
-.first {
+.first  {
     margin-top: 40px;
     margin-bottom: 50px;
     font-family: 'Poppins', sans-serif;
 }
 
-    .first h4 {
+    .first h4  {
         font-size: 20px;
         letter-spacing: 3px;
         position: relative;
@@ -27,7 +27,7 @@
         padding-bottom: 0.5em;
     }
 
-        .first h4::after {
+        .first h4::after   {
             content: '';
             background: #66c83d;
             width: 20%;

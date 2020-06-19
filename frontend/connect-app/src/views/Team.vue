@@ -184,7 +184,5 @@
 </template>
 
 <style>
-.resize{
 
-}
 </style>
