@@ -144,11 +144,11 @@
           </div>
           
         </div>
-        <!-- Row -->
+        <!-- Row  hire sojnsands-->
       </div>
-      <div class="resize">
+      
       <div class="container" >
-      <div class="col-sm-5" >
+      <div class="col-sm" >
         <!-- Row -->
         <div class="row">
           <div class="col-md-12 ">
@@ -180,16 +180,11 @@
   <!-- tema unten -->
   </div>
 </div>  
- </div>
+
 </template>
 
 <style>
 .resize{
-    padding-left: 400px;
-   
- 
-    
 
-  
 }
 </style>

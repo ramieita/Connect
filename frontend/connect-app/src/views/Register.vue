@@ -43,18 +43,21 @@
     </div>
   <Matrial/>
   <Team/>
+  <Footer />
   </div>
 </template>
 
 <script>
 import Team from "./Team"
 import Matrial from "./Matrial"
+import Footer from "./FooterLanding"
 export default {
   
   name: "Register",
   components: {
    Team,
-   Matrial
+   Matrial,
+   Footer
   },
   data() {
     return {

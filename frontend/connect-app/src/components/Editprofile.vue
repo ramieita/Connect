@@ -36,6 +36,8 @@
       <div class="form-check"></div>
       <button type="submit" class="btn btn-outline-secondary">Update Profile</button>
     </form>
+    <br>
+  s
   </div>
 </template>
 
