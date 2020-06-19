@@ -26,7 +26,7 @@
                             <li>Burak Kara</li>
                             <li>Muhammet Üresin</li>
                             <li>Hamzah Fayad</li>
-                            <li>yide xu</li>
+                            <li>Yide Xu</li>
                             <li>Maksym Olshanskyy</li>
                             <li>Mohamad Rami Eita</li>
                             <li>Louis Cheung</li>

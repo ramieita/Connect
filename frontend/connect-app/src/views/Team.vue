@@ -134,7 +134,7 @@
           </div>
           <div class="col-md-12 text-center">
             <div class="pt-2">
-              <h5 class="mt-4 font-weight-medium mb-0">yide xu</h5>
+              <h5 class="mt-4 font-weight-medium mb-0">Yide Xu</h5>
               <h6 class="subtitle mb-3">Property Specialist</h6>
               <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
               <ul class="list-inline">
