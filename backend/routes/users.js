@@ -4,18 +4,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../modal/User");
 const verifytoken = require("../verification/verifytoken");
 const key = require("../config/keys");
-const multer = require("multer");
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/images')
-  },
-  filename: function (req, file, cb) {
-    
-    cb(null, file.fieldname + '-' + Date.now() + '.png')
-  }
-})
-var upload = multer({ storage: storage })
 /***** User *****/
 
 // Create User
@@ -55,7 +44,6 @@ router.post("/signup", (req, res) => {
           username: username,
           email: email,
           password: password,
-          avatar :"icons8.png"
         });
         //hash password before saving new user into database
         //source: https://www.npmjs.com/package/bcrypt
@@ -84,19 +72,6 @@ router.post("/signup", (req, res) => {
   });
 });
 
-// upload user image 
-
-router.post('/uploadsAvatar', upload.single('avatar') , (req,res)=>{
-  console.log(req);
- let newFields = {
-   avatar :req.file.path
- }
- User.updateOne({ _id: auth.User.id}, newFields,(err)=>{
-   if(!err){
-     console.log("updatetd");
-   }
- })
-})
 //Login user
 router.post("/login", (req, res) => {
   User.findOne(
