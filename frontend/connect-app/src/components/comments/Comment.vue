@@ -4,15 +4,33 @@
 
     <div class="card" id="post">
       <div class="card-header">
-        <input type="text" v-model="postTitle" id="title" :class="{view: userId !== postOwner}" :disabled="userId !== postOwner"/>
+        <input
+          type="text"
+          v-model="postTitle"
+          id="title"
+          :class="{view: userId !== postOwner}"
+          :disabled="userId !== postOwner"
+        />
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0">
-        <textarea type="text" v-model="postContent" id="content" :class="{view: userId !== postOwner}" :disabled="userId !== postOwner"/>
+          <textarea
+            type="text"
+            v-model="postContent"
+            id="content"
+            :class="{view: userId !== postOwner}"
+            :disabled="userId !== postOwner"
+          />
           <br />
         </blockquote>
       </div>
-      <button @click="editPost" v-if="userId == postOwner" type="submit" variant="success" id="editbtn">Edit</button>
+      <button
+        @click="editPost"
+        v-if="userId == postOwner"
+        type="submit"
+        variant="success"
+        id="editbtn"
+      >Edit</button>
       <footer class="blockquote-footer">
         posted by
         <cite title="Source Title">{{postedBy}}</cite>
@@ -42,6 +60,11 @@
       <div class="card" id="comments">
         <div class="card-header1">
           <p class="commenter">commented by {{ c.commentedBy.username }}</p>
+          <button
+            class="btn btn-delete"
+            @click="deleteComment(c._id)"
+            v-if="userId == c.commentedBy._id"
+          >Delete</button>
         </div>
         <div class="card-body">
           <h5 class="card-text">{{ c.content }}</h5>
@@ -139,25 +162,53 @@ export default {
       let title = document.getElementById("title").value;
       let content = document.getElementById("content").value;
       let url =
-          "http://localhost:3000/api/v1/topic/" +
-          window.location.pathname.split("/")[2] +
-          "/post/" + window.location.pathname.split("/")[4];
-        var headers = {
-          headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
-        };
-        let body = {
-          title: title,
-          content: content
-        };
-      this.$http.put(url,body,headers)
-      .then(res => {
-        alert("Post updated");
-        this.edited = true;
-        console.log(res);     
-      })
-      .catch(err => {
-        console.log(err)
-      })
+        "http://localhost:3000/api/v1/topic/" +
+        window.location.pathname.split("/")[2] +
+        "/post/" +
+        window.location.pathname.split("/")[4];
+      var headers = {
+        headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
+      };
+      let body = {
+        title: title,
+        content: content
+      };
+      this.$http
+        .put(url, body, headers)
+        .then(res => {
+          alert("Post updated");
+          this.edited = true;
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    deleteComment(id) {
+      let url =
+        "http://localhost:3000/api/v1/topic/" +
+        window.location.pathname.split("/")[2] +
+        "/post/" +
+        window.location.pathname.split("/")[4] +
+        "/comment/" +
+        id;
+      var headers = {
+        headers: { authorization: "Bearer " + localStorage.getItem("jwt") }
+      };
+      this.$http
+        .delete(url, headers)
+        .then(res => {
+          var self = this;
+          self.comments.splice(
+            self.comments.findIndex(i => i._id == id),
+            1
+          );
+          alert("Deleted");
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     goBack() {
       this.$router.go(-1);
@@ -180,7 +231,7 @@ export default {
   color: rgb(20, 61, 46);
 }
 .card-header1 {
-  background: #ffd1dc;
+  background: #edc9af;
 }
 #comments {
   box-shadow: 4px 2px 2px rgb(194, 194, 194);
@@ -220,11 +271,15 @@ footer {
   background: rgb(86, 164, 228);
   color: rgb(255, 255, 255);
 }
-#editbtn{
+#editbtn {
   background: #f0ad4e;
   color: #463115;
   border: none;
   width: 8%;
+  margin: 0.5%;
+}
+.btn-delete{
+  background: #d9534f;
   margin: .5%;
 }
 .img-fluid {
@@ -247,22 +302,22 @@ h6 {
   font-size: 2em;
   background: blanchedalmond;
 }
-textarea{
+textarea {
   width: 90%;
   float: left;
 }
-.view{
+.view {
   border-color: transparent;
   background-color: initial;
 }
-#title{
+#title {
   width: 90%;
   float: left;
   background-color: rgb(70, 202, 151);
   border-color: rgb(29, 83, 62);
   padding: 8px;
 }
-#content{
+#content {
   padding: 8px;
 }
 </style>
