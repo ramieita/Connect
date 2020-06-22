@@ -2,7 +2,16 @@
   <div>
     <Navbar />
     <code @click="goBack">&#060;&#060;&#060; Back to Topics</code>
-    <br />
+    <br /><br />
+    <form class="form-inline">
+        <input
+          class="form-control mr-sm-2 search"
+          type="text"
+          placeholder="Search for posts"
+          v-model="search"
+          aria-label="Search.."
+        />
+      </form><br />
     <h4>
       Here you can talk about
       <strong>{{topicName}}</strong> and exchange your ideas about this topic.
@@ -21,7 +30,7 @@
       />
     </div>
     <textarea
-      type="textarea"
+      type="textarea" 
       aria-label="Post Content"
       class="form-control"
       id="content"
@@ -29,7 +38,7 @@
       v-model="content"
     />
     <button id="btn" type="submit" variant="success" @click="createPost">POST</button>
-    <li v-for="p in posts" :key="p._id + '-label'">
+    <li v-for="p in filteredList" :key="p._id + '-label'">
       <div class="card">
         <div class="card-header">
           <p>posted by: {{ p.postedBy.username }}</p>
@@ -76,11 +85,19 @@ export default {
       isActive: false,
       userId: localStorage.getItem("userId"),
       title: "",
-      content: ""
+      content: "",
+      search: ""
     };
   },
   mounted() {
     this.getPosts();
+  },
+  computed:{
+    filteredList() {
+      return this.posts.filter(post => {
+        return post.title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
   },
   methods: {
     getPosts() {
@@ -169,6 +186,11 @@ export default {
 </script>
 
 <style scoped>
+.search{
+  float: left;
+  width: max-content;
+  margin: .5%;
+}
 .card {
   width: 90%;
   margin: 1% auto;
@@ -207,7 +229,7 @@ p {
 .btn-edit {
   background: rgb(219, 166, 122);
   color: rgb(80, 72, 66);
-  width: 6%;
+  width: max-content;
   margin: 0.5%;
   float: left;
   border: none;
