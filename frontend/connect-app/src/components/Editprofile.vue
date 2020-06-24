@@ -37,14 +37,17 @@
       <button type="submit" class="btn btn-outline-secondary">Update Profile</button>
     </form>
     <br>
-  s
+    <Calendar />
   </div>
 </template>
 
  <script>
+ import Calendar from './Calendar'
 export default {
   name: "EditProfile",
-  components: {},
+  components: {
+    Calendar
+  },
   data() {
     return {
       id: "",
