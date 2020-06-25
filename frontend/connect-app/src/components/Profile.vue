@@ -1,57 +1,59 @@
 <template>
 <div>
- <Navbar />
- <div class="oberklasse">
- <div class="test">
- <Editprofile /> 
- </div>
- <div class="unterklasse">
-  <div class="card">
-  <card class="card-user"   >
-    <div slot="image">
-      <img src="@/assets/img/background.jpg" alt="...">
-    </div>
-    <div>
-      <div class="author">
-        <img class="avatar border-white" src="@/assets/img/icons8.png" alt="...">
-        <h4 class="title">{{username}} 
-          <br>
-            <small>{{email}}</small>
-          
-        </h4>
-      </div>
-      <p class="description text-center">
-        "I like the way you work it
-        <br> I am Student
-        <br> I wanna bag it up"
-      </p>
-    </div>
-    
-   
-  </card>
+<Navbar/>
+  <div class=" portfolio">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="heading">				
+				<img src="https://image.ibb.co/cbCMvA/logo.png" />
+			</div>
+		</div>	
+	</div>
+	<div class="bio-info">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bio-image">
+							<img src="https://image.ibb.co/f5Kehq/bio-image.jpg" alt="image" />
+						</div>			
+					</div>
+				</div>	
+			</div>
+			<div class="col-md-6">
+				<div class="bio-content">
+					<h1>{{username}}</h1>
+                    <br>
+					<h6> Email:  {{email}}</h6>
+                    <br>
+					<p>Bio: {{text}}</p>
+				</div>
+			</div>
+		</div>	
+	</div>
   </div>
- </div>
- </div> 
- <Footer />
- </div>
-   
+ 
+ <Edit/>
+ <Footer/>
+</div>
 </template>
-
- <script>
+<script>
 import Navbar from "./navigation/Navbar";
-import Editprofile from "./Editprofile"
 import Footer from "./Footer"
+import Edit from "./Edit"
 export default { 
   name: "Profile",
   components: {
     Navbar,
-    Editprofile,
+    Edit,
+    
     Footer
   },
   data() {
     return {
       username: "",
-      email: ""
+      email: "",
+      text : "",
     };
   },
   mounted() {
@@ -64,6 +66,7 @@ export default {
       .then(res => {
         this.username = res.data.username;
         this.email = res.data.email;
+        this.text = res.data.text;
       })
       .catch(err => {
         console.log(err);
@@ -71,8 +74,9 @@ export default {
   }
 };
 </script>
-<style>
 
-@import "../assets/style/profile.css";
+<style scoped>
+@import "../assets/style/Profile.css";
 
-</style> 
+
+</style>

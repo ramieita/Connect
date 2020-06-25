@@ -3,7 +3,16 @@
   <div class ="body">
     
     <h2>
-      <strong>Connect</strong>
+  <div class="main">
+	<span>C</span>
+	<span>O</span>
+	<span>N</span>
+	<span>N</span>
+	<span>E</span>
+	<span class="letter"></span>
+	<span>C</span>
+	<span>T</span>
+</div>
       <br />- simplify your student life -
     </h2>
     <img src="../assets/img/logo.png" alt="logo" id="logo" />
@@ -102,6 +111,38 @@ export default {
   100% {
     background-position: 0% 50%;
   }
+}
+
+span{
+	margin: 0 15px;
+	line-height: .7;
+	text-shadow: 0 0 2px rgba(0, 0, 0, .45);
+	animation: span 3s ease-in infinite alternate;
+}
+.main{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+.letter{
+	display: inline-flex;
+	height: 30px;
+	width: 27px;
+	border: 2.35px solid black;
+	border-radius: 14px;
+	box-shadow:
+		0 0 2px rgba(0, 0, 0, .75),
+		inset 0 0 2px rgba(0, 0, 0, .45);
+
+	animation: letter 3s ease-in-out infinite alternate;
+}
+@keyframes span {
+	0%,30%{ margin: 0 15px; }
+	70%,100%{ margin: 0 5px; }
+}
+@keyframes letter {
+	0%,30%{ width: 27px; }
+	70%,100%{ width: 30vw; }
 }
 
 </style>
