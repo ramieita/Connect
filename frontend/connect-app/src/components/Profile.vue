@@ -76,7 +76,47 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/style/Profile.css";
 
-
+.portfolio{
+    padding:6%;
+    text-align:center;
+}
+.heading{
+    background: #fff;
+    padding: 1%;
+    text-align: left;
+   
+}
+.heading img{
+    width: 10%;
+}
+.bio-info{
+    padding: 5%;
+    background:#fff;
+    box-shadow: 0px 0px 4px 0px #b0b3b7;
+}
+.name{
+    font-family: 'Charmonman', cursive;
+    font-weight:600;
+}
+.bio-image{
+    text-align:center;
+}
+.bio-image img{
+    border-radius:50%;
+    width: 50%;
+}
+.bio-content{
+    text-align:left;
+}
+.bio-content p{
+    font-weight:500;
+    font-size:18px;
+}
+@media screen and (max-width: 520px) {
+    .bio-content p {
+      font-size: 13px;
+     
+    }
+}
 </style>

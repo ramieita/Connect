@@ -5,6 +5,7 @@
         By having a <strong>Connect</strong> account, you can join
         supportive students for a better learning.
       </h5>
+      
       <b-form @submit.prevent="register">
         <b-form-group id="name">
           <b-form-input id="input1" v-model="name" required placeholder="Name"></b-form-input>
@@ -33,6 +34,15 @@
             placeholder="Confirm Password"
           ></b-form-input>
         </b-form-group>
+         <b-form-textarea
+      id="textarea-state"
+      v-model="text"
+      :state="text.length >= 100"
+      placeholder="Enter at least 10 words about you"
+      rows="3"
+      column ="2"
+    ></b-form-textarea>
+         <br>
         <b-button id="btn" type="submit" variant="success">SIGN UP</b-button>
       </b-form>
       <aside>
@@ -65,7 +75,8 @@ export default {
       username: "",
       email: "",
       password: "",
-      confirm_password: ""
+      confirm_password: "",
+      text: "",
     };
   },
   methods: {
@@ -77,11 +88,13 @@ export default {
           username: this.username,
           email: this.email,
           password: this.password,
-          confirm_password: this.confirm_password
+          confirm_password: this.confirm_password,
+          text : this.text,
         })
         .then(res => {
           if (res.data.success) {
             localStorage.setItem("jwt", res.data.token);
+            localStorage.setItem("userId", res.data.id);
             this.$swal("Success", "Registration was successful.", "success");
             this.$router.push("/");
           }
@@ -126,4 +139,4 @@ p {
 #logo {
   margin-right: 90%;
 }
-</style> 
+</style>

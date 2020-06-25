@@ -4,44 +4,10 @@ const bcrypt = require("bcryptjs");
 const User = require("../modal/User");
 const verifytoken = require("../verification/verifytoken");
 const key = require("../config/keys");
-const multer = require('multer');
-const Grid = require('gridfs-stream');
-const GridFsStorage = require('multer-gridfs-storage');
-/***** User
-const multer = require("multer");
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/images')
-  },
-  filename: function (req, file, cb) {
-    
-    cb(null, file.fieldname + '-' + Date.now() + '.png')
-  }
-})
-var upload = multer({ storage: storage })
-
- *****/
 /***** User *****/
 
 // Create User
-
-
-//router.post('/uploadsAvatar', upload.single('avatar') , (req,res)=>{
-  //console.log(req.path);
-  //let newFields = {
-    //avatar :req.file
-  //}
-  //User.updateOne({ _id: User.id}, newFields,(err)=>{
-    //if(!err){
-      //console.log("updatetd");
-    //}
-  //})
- //})
- 
- 
-
-
 
 //Signup user
 router.post("/signup", (req, res) => {
