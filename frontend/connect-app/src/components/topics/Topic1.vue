@@ -1,8 +1,10 @@
 <template>
-  <div>
+<div>
     <Navbar />
+   
     <h1>{{ topicId | uppercase }}</h1>
     <h3>Please add module name to topic name so everything stays organized.</h3>
+     <div class="container">
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">Create new topic</span>
@@ -17,37 +19,48 @@
       />
       <b-button id="btn" type="submit" variant="success" @click="createTopic">CREATE</b-button>
     </div>
-    
-    <div>
-      <table class="table table-hover">
-        <thead>
+    </div>
+    <!--  Loop for tbale-->
+    <div class="container mb-5 mt-3">
+     <table class="table table-striped table-bordered myTable " style="width:100%" id="">
+       <thead>
           <tr>
             <th scope="col">Created by</th>
             <th scope="col">Topic Name</th>
             <th scope="col">Date</th>
             <th scope="col">Posts</th>
           </tr>
-        </thead>
+       </thead>
         <tbody>
           <tr v-for="topic in sortByPosts" :key="topic._id">
             <td>{{ topic.owner.username }}</td>
             <router-link class="link" :to="'/module/' + topic._id + '/' + topic.name">
-              <td>{{ topic.name }}</td>
+              <td>{{ topic.name }} </td>
             </router-link>
 
             <td class="date">{{ topic.date.split("T")[0] }}</td>
             <td>{{ topic.post.length }} posts</td>
           </tr>
         </tbody>
-      </table>
-    </div>
-    <img src="/svg/topic.svg" alt="topic" class="img-fluid" />
-  </div>
-</template>
+     </table>
 
+    </div>
+   
+
+      
+ </div>      
+ 
+</template>
 <script>
+
 import Navbar from "../navigation/Navbar";
+import $ from 'jquery';
+
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
 export default {
+
   name: "Topic",
   props: {
     topicId: String
@@ -74,6 +87,9 @@ export default {
       return topicCopy.sort(compare)
     }
   },
+
+
+  
   components: {
     Navbar
   },
@@ -185,59 +201,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-h1 {
-  margin: 1%;
-}
-.table,
-.input-group {
-  width: 70%;
-  margin: 2% auto;
-}
-.date {
-  color: #d9534f;
-}
-.link > td {
-  font-weight: bolder;
-  width: 340px;
-}
-
-.table {
-  border-collapse: collapse;
-}
-th {
-  background-color: rgb(61, 172, 129);
-  color: white;
-}
-td {
-  width: 150px;
-  text-align: center;
-  border: 1px solid rgb(61, 61, 61);
-  padding: 5px;
-}
-th {
-  width: 150px;
-  text-align: center;
-  padding: 5px;
-}
-#btn {
-  background: #88bbe4;
-  color: rgb(75, 104, 128);
-  border: none;
-}
-#btn:hover {
-  background: rgb(86, 164, 228);
-  color: rgb(255, 255, 255);
-}
-.img-fluid {
-  width: 300px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-  margin-top: -30px;
-  margin-left: -120px;
-  z-index: -2;
-  opacity: 0.95;
-}
-</style>

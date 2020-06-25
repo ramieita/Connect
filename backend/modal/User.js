@@ -14,6 +14,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    text : {
+        type :String,
+        required :true
+    },
     topic: [{
         type: Schema.Types.ObjectId,
         ref: 'Topic',
@@ -23,7 +27,7 @@ const userSchema = new Schema({
         type: Date,
         default: Date.now()
     },
- 
+   
 
 })
 
