@@ -191,7 +191,39 @@ router.put("/:commentId", (req, res) => {
 
 router.delete('/:commentId', (req, res) => {
   //delete comment
+  jwt.verify(req.token, key.secretKey, (err, auth) => {
+    if (err) {
+      res.status(403).json({
+        message: "Access forbidden",
+      });
+    } else {
+      let commentId = req.params.commentId;
+      let postId = req.headers.referer.split("/")[6];
+      if (ObjectId.isValid(commentId)) {
+        Post.findOne({ _id: postId }).then((p) => {
+          if (p != null) {
+            Post.findOneAndUpdate(
+              { _id: postId },
+              { $pull: { comments: ObjectId(commentId) } },
+              { new: true, safe: true }
+            ).then((c) => {
+              Comment.findOneAndDelete({ _id: commentId })
+                .then(() => {
+                    res.status(200).json({
+                      message: "Comment Deleted",
+                    });
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            });
+          }
+        });
+      }
+    }
+  });
 })
+
 
 function permission(comment, authId) {
   if (comment.commentedBy.toString() === authId) {

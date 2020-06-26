@@ -14,6 +14,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    text : {
+        type :String,
+        required :true
+    },
     topic: [{
         type: Schema.Types.ObjectId,
         ref: 'Topic',
@@ -22,7 +26,9 @@ const userSchema = new Schema({
     date: {
         type: Date,
         default: Date.now()
-    }
+    },
+   
+
 })
 
 module.exports = User = mongoose.model('User', userSchema);
