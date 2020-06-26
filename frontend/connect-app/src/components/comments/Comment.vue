@@ -1,7 +1,6 @@
 <template>
   <div>
     <Navbar />
-
     <div class="card" id="post">
       <div class="card-header">
         <input
@@ -12,6 +11,7 @@
           :disabled="userId !== postOwner"
         />
       </div>
+      
       <div class="card-body">
         <blockquote class="blockquote mb-0">
           <textarea
@@ -38,39 +38,66 @@
       </footer>
     </div>
 
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Comment</span>
-      </div>
-      <input
-        type="text"
-        aria-label="comment"
-        class="form-control"
-        id="comment"
-        placeholder="comment"
-        v-model="comment"
-      />
-      <button id="btn" type="submit" variant="success" @click="createComment">COMMENT</button>
+     <div class="container" >
+
+    <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea"  id="comment" v-model="comment" placeholder="Add a comment..."></textarea>
+      </p>
+      
     </div>
+    <div class="field">
+      <p class="control">
+        <button class="button"  type="submit"  @click="createComment">Post comment</button>
+      </p>
+    </div>
+  </div>
+</article>
+
+      <!-- hier muus  -->
     <div v-if="!comments.length > 0">
       <img src="/svg/no-comments.svg" alt="post" class="img-fluid" />
       <h6>No comments yet</h6>
     </div>
     <li v-for="c in comments" :key="c._id + '-label'">
-      <div class="card" id="comments">
-        <div class="card-header1">
-          <p class="commenter">commented by {{ c.commentedBy.username }}</p>
-          <button
-            class="btn btn-delete"
-            @click="deleteComment(c._id)"
-            v-if="userId == c.commentedBy._id"
-          >Delete</button>
-        </div>
-        <div class="card-body">
-          <h5 class="card-text">{{ c.content }}</h5>
-        </div>
-      </div>
+     
+    <div class="space">
+     <article class="media">
+      <figure class="media-left">
+       <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+       </p>
+      </figure>
+       <div class="media-content">
+        <div class="content">
+         <p>
+        <strong>{{c.commentedBy.username}}</strong> <small>{{c.commentedBy.date}}</small>
+        <br>
+        {{c.content}}
+        <br>
+      </p>
+     <div class="media-right">
+    <button class="delete" @click="deleteComment(c._id)"
+            v-if="userId == c.commentedBy._id"></button>
+  </div>
+    </div>
+  </div>
+  
+    </article>
+</div>
+   
+
+
     </li>
+  </div>
+  
   </div>
 </template>
 
@@ -118,6 +145,7 @@ export default {
           self.postedBy = res.data.postOwner.username;
           self.postOwner = res.data.postOwner._id;
           self.comments = res.data.cArray;
+        
         })
         .catch(err => {
           console.log(err);
@@ -218,6 +246,17 @@ export default {
 </script>
 
 <style scoped>
+
+
+.media .avatar {
+    width: 64px;
+}
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
 .card {
   width: 80%;
   margin: 2% auto;
