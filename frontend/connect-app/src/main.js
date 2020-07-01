@@ -8,11 +8,13 @@ import '@popperjs/core'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSwal from 'vue-swal'
+
 //import './assets/style/style.css'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueSwal)
+
 
 Vue.prototype.$http = axios
 

@@ -7,6 +7,7 @@ import Profile from "../components/Profile.vue";
 import Topic from "../components/topics/Topic.vue";
 import Post from "../components/posts/Post.vue";
 import Comment from "../components/comments/Comment.vue";
+import Contact from "../views/Contact.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,15 @@ const routes = [
     name: "Post",
     props: true,
     component: Post,
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: "/Contact",
+    name: "Contact",
+   
+    component: Contact,
     meta: {
       auth: true,
     },
