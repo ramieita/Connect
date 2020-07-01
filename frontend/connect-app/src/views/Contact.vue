@@ -113,7 +113,7 @@ export default {
 </script>
 <style  scoped>
 .backgroound{
-    background-image: url(C:/Users/rami/Desktop/connect/frontend/connect-app/src/assets/img/black.jpg);
+    background-image: url("../assets/img/black.jpg");
     height: 600px; 
     background-position: center; /* Center the image */
    
@@ -145,9 +145,7 @@ img{
 .contact-form {
   margin-bottom: 40px;
 }
-p{
-    
-}
+
 p.social {
   text-align: center;
   margin-top: 20px;
