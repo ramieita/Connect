@@ -8,6 +8,7 @@ const configDB = require("./config/keys");
 const verifytoken = require('./verification/verifytoken');
 
 const users = require("./routes/users");
+const images = require("./routes/images");
 const topics = require("./routes/topics");
 const posts = require("./routes/posts");
 const comments = require("./routes/comments");
@@ -20,18 +21,18 @@ app.use(
   })
 );
 
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
   if ('OPTIONS' === req.method) {
-    res.send(200);
+    res.sendStatus(200);
   }
   else {
     next();
   }
-});*/
+});
 
 app.use(bodyParser.json());
 //app.use(express.urlencoded({ extended: true }));
@@ -51,8 +52,9 @@ mongoose
   .catch((err) => {
     console.log(`Connection to ${db} failed due to ${err}`);
   });
+  app.use('/public', express.static('public'));
 
-
+app.use('/api', images);
 app.use('/api/v1/users', users);
 app.use('/api/v1/topic', verifytoken, topics);
 app.use('/api/v1/topic/:topicId/post', verifytoken, posts);

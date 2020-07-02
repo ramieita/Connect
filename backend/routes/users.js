@@ -4,19 +4,32 @@ const bcrypt = require("bcryptjs");
 const User = require("../modal/User");
 const verifytoken = require("../verification/verifytoken");
 const key = require("../config/keys");
+multer = require('multer');
+
+mongoose = require('mongoose');
+
+
+
+
+
+
+
+
+
 
 /***** User *****/
 
 // Create User
 
 //Signup user
-router.post("/signup", (req, res) => {
+router.post("/signup" , (req, res) => {
  
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
   var confirm_password = req.body.confirm_password;
   var text = req.body.text;
+  
 
   if (password !== confirm_password) {
     return res.status(400).json({
@@ -46,7 +59,8 @@ router.post("/signup", (req, res) => {
           username: username,
           email: email,
           password: password,
-          text : text
+          text : text,
+          
           
         });
         //hash password before saving new user into database
@@ -64,7 +78,8 @@ router.post("/signup", (req, res) => {
                 return res.status(201).json({
                   message: "User signed up successfully.",
                   token: token,
-                  success: true
+                  success: true,
+                 
                 });
               });
             })
@@ -133,6 +148,7 @@ router.get("/profile", verifytoken, (req, res) => {
           text :userProfile.text,
           id: userProfile._id,
           text:userProfile.text,
+          
         });
       });
     }
@@ -232,6 +248,7 @@ router.delete("/delete/:id", (req, res) => {
       console.log(err);
     });
 });
+
 
 
 

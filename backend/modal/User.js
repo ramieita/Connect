@@ -27,7 +27,14 @@ const userSchema = new Schema({
         type: Date,
         default: Date.now()
     },
-     
+    files : [{
+        type: Schema.Types.ObjectId,
+        ref: 'Image',
+        
+    }]
+
+    
+   
 
 })
 

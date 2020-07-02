@@ -6,7 +6,7 @@
         supportive students for a better learning.
       </h5>
       
-      <b-form @submit.prevent="register">
+      <form @submit.prevent="register">
         <b-form-group id="name">
           <b-form-input id="input1" v-model="name" required placeholder="Name"></b-form-input>
         </b-form-group>
@@ -43,14 +43,19 @@
       column ="2"
     ></b-form-textarea>
          <br>
+         
         <b-button id="btn" type="submit" variant="success">SIGN UP</b-button>
-      </b-form>
+          
+      </form>
+     
       <aside>
         Already a Connector?
         <router-link id="link" to="/login">LOG IN</router-link>
       </aside>
       <p>By continuing, you agree to our User Agreement and Privacy Policy</p>
     </div>
+
+    
   <Matrial/>
   <Team/>
   <Footer />
@@ -77,19 +82,24 @@ export default {
       password: "",
       confirm_password: "",
       text: "",
+     
     };
   },
   methods: {
+  
     register() {
+      
       let url = this.$store.state.url;
+      
       this.$http
-        .post(url + "signup", {
+        .post(url + "signup",  {
           name: this.name,
           username: this.username,
           email: this.email,
           password: this.password,
           confirm_password: this.confirm_password,
           text : this.text,
+          
         })
         .then(res => {
           if (res.data.success) {
@@ -103,7 +113,8 @@ export default {
           console.log(err);
           this.$swal("Error", "Something went wrong.", "error");
         });
-    }
+    },
+    
   }
 };
 </script>

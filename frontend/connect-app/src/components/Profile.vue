@@ -15,7 +15,11 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="bio-image">
-							<img src="https://image.ibb.co/f5Kehq/bio-image.jpg" alt="image" />
+							<img src="" alt="image" />
+              <div>
+
+               
+              </div>
 						</div>			
 					</div>
 				</div>	
@@ -32,7 +36,8 @@
 		</div>	
 	</div>
   </div>
- 
+   
+ <ImageZ/>
  <Edit/>
  <Footer/>
 </div>
@@ -41,19 +46,28 @@
 import Navbar from "./navigation/Navbar";
 import Footer from "./Footer"
 import Edit from "./Edit"
+
+import ImageZ from "./image"
+
 export default { 
   name: "Profile",
+  props: [""],
   components: {
     Navbar,
     Edit,
+    ImageZ,
     
     Footer
   },
+ 
   data() {
+    
     return {
       username: "",
       email: "",
       text : "",
+      files:null,
+      
     };
   },
   mounted() {
@@ -67,16 +81,22 @@ export default {
         this.username = res.data.username;
         this.email = res.data.email;
         this.text = res.data.text;
+         
+        
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  },
+   
 };
 </script>
 
 <style scoped>
 
+img{
+  width: 100px;
+}
 .portfolio{
     padding:6%;
     text-align:center;
