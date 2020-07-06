@@ -55,7 +55,7 @@
     </div>
     <div class="field">
       <p class="control">
-        <button class="button"  type="submit"  @click="createComment">Post comment</button>
+        <button class="button"  type="submit"  @click="createComment">Comment</button>
       </p>
     </div>
   </div>
@@ -311,11 +311,17 @@ footer {
   color: rgb(255, 255, 255);
 }
 #editbtn {
-  background: #f0ad4e;
-  color: #463115;
-  border: none;
-  width: 8%;
+  background: rgb(219, 166, 122);
+  color: rgb(80, 72, 66);
+  width: 12%;
   margin: 0.5%;
+  border-radius: 6%;
+  float: left;
+  border: none;
+}
+#editbtn:hover {
+  background: rgb(172, 123, 83);
+  color: rgb(240, 232, 227);
 }
 .btn-delete{
   background: #d9534f;
@@ -350,13 +356,30 @@ textarea {
   background-color: initial;
 }
 #title {
-  width: 90%;
+  width: 100%;
+  font-weight: bolder;
   float: left;
-  background-color: rgb(70, 202, 151);
-  border-color: rgb(29, 83, 62);
+  background-color: transparent;
+  border: none;
   padding: 8px;
+}
+#title:hover{
+  background:rgb(102, 192, 158);
 }
 #content {
   padding: 8px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+#content:hover{
+  background:rgb(235, 234, 221);
+}
+.button{
+    background: rgb(77, 202, 154);
+}
+.button:hover{
+  background: rgb(57, 150, 114);
+  color: white;
 }
 </style>
