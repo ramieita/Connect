@@ -23,10 +23,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Aussagenlogik, Prädikatenlogik, Kombinatorik, Relationen</p>
         </div>
       </div>
 
@@ -38,10 +35,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Endliche Automaten, Reguläre Ausdrücke, Grammatiken</p>
         </div>
       </div>
 
@@ -53,10 +47,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Digitale Entwürfe, GUI, Typographie, Layout</p>
         </div>
       </div>
 
@@ -68,10 +59,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Zahlensysteme, Rechnerhardware, Lokale Grundkonzepte</p>
         </div>
       </div>
 
@@ -83,10 +71,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Variablen + Datentypen, Anweisungen, Klassen + Objekte</p>
         </div>
       </div>
       <!-- 2.Sem-->
@@ -98,10 +83,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Lineare Algebra, Elemente der Analysis</p>
         </div>
       </div>
       <div class="card">
@@ -112,10 +94,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >O-Notation, Sortieralgorithmen, Graphen</p>
         </div>
       </div>
       <div class="card">
@@ -126,10 +105,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >DB-Entwurf, SQL, ER-Modell, Relationenalgebra</p>
         </div>
       </div>
       <div class="card">
@@ -140,10 +116,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >JUnit, Objektsammlungen, Serialisierung, GUI</p>
         </div>
       </div>
       <div class="card">
@@ -154,10 +127,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Unix Shell, Dateisysteme, moderne Skriptsprachen</p>
         </div>
       </div>
       <!-- 3.semter -->
@@ -169,10 +139,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Pflichtenheft, Geschäftsprozesse, Klassendiagramm</p>
         </div>
       </div>
       <div class="card">
@@ -183,10 +150,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Vektoren, Licht + Farbe, Kameramodelle</p>
         </div>
       </div>
       <div class="card">
@@ -197,10 +161,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Schallwellen, Messtechnik, Bild- und Videokompression</p>
         </div>
       </div>
       <div class="card">
@@ -211,10 +172,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Architekturen, IP-Protokolle, Sicherheit</p>
         </div>
       </div>
       <div class="card">
@@ -225,10 +183,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >HTML + CSS, responsive Gestaltung, JavaScript</p>
         </div>
       </div>
 
@@ -242,10 +197,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >UML, Entwurfsmodelle, Implementierung(OOP)</p>
         </div>
       </div>
       <div class="card">
@@ -256,10 +208,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >Client-Server, REST-APIs, Frameworks</p>
         </div>
       </div>
       <div class="card">
@@ -270,10 +219,7 @@
           </router-link>
           <p
             class="card-text"
-          >This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          >User Experience, Personas, Evaluationen</p>
         </div>
       </div>
     </div>

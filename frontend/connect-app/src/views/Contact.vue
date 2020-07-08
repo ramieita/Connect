@@ -13,12 +13,12 @@
         <div class="row">
           <div class="col-lg-6">
             <h2 class="heading">About Us</h2>
-            <p class="lead">This can be an about section.</p>
-            <p>Impossible considered invitation him men instrument saw celebrated unpleasant. Put rest and must set kind next many near nay. He exquisite continued explained middleton am. Voice hours young woody has she think equal. Estate moment he at on wonder at season little. Six garden result summer set family esteem nay estate. End admiration mrs unreserved discovered comparison especially invitation. </p>
-            <p>Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. Fat make met can must form into gate. Me we offending prevailed discovery. </p>
+            <p style="font-size: 1.8em" class="lead">Connect for a better studying!</p><br>
+            <p style="font-size: 1.2em">Our main focus is to help students come together to work and study on their exercises. Here you can open a topic, create posts and help others by commenting on their posts.</p><br>
+            <p style="font-size: 1.2em">We would love hearing from you by sending us an email so we can consider your thoughts and improve our application. Let's connect!</p>
           </div>
           <div class="col-lg-5 mx-auto">
-            <p><img src="@/assets/img/japan-mountains.jpg" alt="" class="img-fluid rounded-circle"></p>
+            <p><img src="@/assets/img/logo.png" alt="" class="img-fluid rounded-circle"></p>
           </div>
         </div>
       </div>
@@ -64,8 +64,14 @@
                 </form>
               </div>
               <div class="col-lg-6 block">
-                <p>Effects present letters inquiry no an removed or friends. Desire behind latter me though in. Supposing shameless am he engrossed up additions. My possible peculiar together to. Desire so better am cannot he up before points. Remember mistaken opinions it pleasure of debating. Court front maids forty if aware their at. Chicken use are pressed removed. </p>
-                <p>Able an hope of body. Any nay shyness article matters own removal nothing his forming. Gay own additions education satisfied the perpetual. If he cause manor happy. Without farther she exposed saw man led. Along on happy could cease green oh. </p>
+                <p style="font-size: 1.2em">Enter your information to send us an email about your thoughts, questions or feedback.</p>
+                <p style="font-size: 1.4em">Thank you for being a Connector. &#9825;</p><br>
+                <p style="font-size: 1em">Impressum:</p>
+                <p style="font-size: 1em">Connect GmbH</p>
+                <p style="font-size: 1em">Connect Street 8</p>
+                <p style="font-size: 1em">Berlin, BE 10117</p>
+                <p style="font-size: 1em">Germany</p>
+
               </div>
             </div>
           </div>
@@ -276,6 +282,10 @@ select.form-control-sm:not([size]):not([multiple]) {
 
 select.form-control-lg:not([size]):not([multiple]) {
   height: calc(2.875rem + 2px);
+}
+
+.img-fluid{
+  width: 50%;
 }
 
 
