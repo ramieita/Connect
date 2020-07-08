@@ -16,7 +16,7 @@
 
     <div class="card-columns">
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top img-1" src="@/assets/img/undraw_mathematics_4otb.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/mathe1">
             <h5 class="card-title" id="mathe1">Mathematik I</h5>
@@ -28,7 +28,7 @@
       </div>
 
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_analyze_17kw.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/gti">
             <h5 class="card-title" id="gti">Grundlagen der Theoretischen Informatik</h5>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_designer_life_w96d.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/mediendesign">
             <h5 class="card-title" id="design">Mediendesign Grundlagen</h5>
@@ -52,7 +52,7 @@
       </div>
 
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_growth_analytics_8btt.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/tgi">
             <h5 class="card-title" id="tgi">Technische Grundlagen der Informatik</h5>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top img-1" src="@/assets/img/undraw_programming_2svr.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/prog1">
             <h5 class="card-title" id="prog1">Programmierung I</h5>
@@ -76,7 +76,7 @@
       </div>
       <!-- 2.Sem-->
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top img-1" src="@/assets/img/undraw_mathematics_4otb.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/mathe2">
             <h5 class="card-title" id="mathe2">Mathematik II</h5>
@@ -87,7 +87,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_setup_analytics_8qkl.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/algo">
             <h5 class="card-title" id="algo">Algorithmen und Datenstrukturen</h5>
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_hacker_mind_6y85.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/datenbanksysteme">
             <h5 class="card-title" id="db">Datenbanksysteme</h5>
@@ -109,7 +109,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_programming_2svr.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/prog2">
             <h5 class="card-title" id="prog2">Programmierung II</h5>
@@ -120,7 +120,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_hacker_mind_6y85.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/betriebssysteme">
             <h5 class="card-title" id="mathe1">Betriebssysteme</h5>
@@ -132,7 +132,7 @@
       </div>
       <!-- 3.semter -->
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top img-1" src="@/assets/img/undraw_software_engineer_lvl5.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/softwareeng1">
             <h5 class="card-title" id="se1">Software Engineering I</h5>
@@ -143,7 +143,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_image_focus_wm20.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/computergrafik">
             <h5 class="card-title" id="cg">Computergrafik Grundlagen</h5>
@@ -154,7 +154,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_visionary_technology_33jy.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/medientechnologien">
             <h5 class="card-title" id="medtech">Medientechnologien</h5>
@@ -165,7 +165,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_open_source_1qxw.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/verteilte-systeme">
             <h5 class="card-title" id="mathe1">Verteilte Systeme</h5>
@@ -176,7 +176,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_static_website_0107.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/webeng1">
             <h5 class="card-title" id="prog2">Web Engineering I</h5>
@@ -190,7 +190,7 @@
       <!-- 4.semter-->
 
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_software_engineer_lvl5.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/softwareeng2">
             <h5 class="card-title" id="prog2">Software Engineering II</h5>
@@ -201,7 +201,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top img-2" src="@/assets/img/undraw_static_website_0107.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/webeng2">
             <h5 class="card-title" id="prog2">Web Engineering II</h5>
@@ -212,7 +212,7 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="@/assets/img/pic.jpg" alt="Card image cap" />
+        <img class="card-img-top" src="@/assets/img/undraw_Artificial_intelligence_oyxx.png" alt="Card image cap" />
         <div class="card-body">
           <router-link to="/module/hci">
             <h5 class="card-title" id="prog2">Human Computer Interaction</h5>
@@ -281,5 +281,10 @@ h3{
   position: relative;
   font-size: 1.4em;
   text-align: center;
+}
+.card-img-top{
+    width:  350px;
+    height: 250px;
+    object-fit: cover;
 }
 </style> 
