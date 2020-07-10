@@ -34,6 +34,7 @@
         <div class="card-header">
           <p>posted by: {{ p.postedBy.username }}</p>
         </div>
+        
 
         <router-link class="link" :to="`${{url}}` + '/' + p._id">
           <button class="btn btn-edit" v-if="userId == p.postedBy._id">Edit</button>
@@ -52,6 +53,9 @@
     </li>
     <img src="/svg/post.svg" alt="post" class="img-fluid" />
     <h6>Let's discuss!</h6>
+     
+   
+    
   </div>
 </template> 
 

@@ -8,6 +8,7 @@ import '@popperjs/core'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSwal from 'vue-swal'
+//import './../node_modules/bulma/css/bulma.css';
 //import './assets/style/style.css'
 
 Vue.use(BootstrapVue)

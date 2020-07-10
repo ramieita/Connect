@@ -24,6 +24,12 @@
           <br />
         </blockquote>
       </div>
+      <div class="media-right">
+                <span class="icon is-small">
+                    <i @click="increaseVotes()" class="fa fa-chevron-up"></i>
+                    <strong class="has-text-info">{{ post.votes }}</strong>
+                </span>
+      </div>
       <button
         @click="editPost"
         v-if="userId == postOwner"
@@ -31,6 +37,7 @@
         variant="success"
         id="editbtn"
       >Edit</button>
+      
       <footer class="blockquote-footer">
         posted by
         <cite title="Source Title">{{postedBy}}</cite>
@@ -79,7 +86,11 @@ import Navbar from "../navigation/Navbar";
 export default {
   name: "Comment",
   props: {
-    postId: String
+    postId: String,
+    //upvote props
+    post: null,
+    //votes: Number
+    //upvote props end
   },
   components: {
     Navbar
@@ -93,13 +104,19 @@ export default {
       postOwner: "",
       comment: "",
       edited: false,
-      userId: localStorage.getItem("userId")
+      userId: localStorage.getItem("userId"),
+      votes: 0
     };
   },
   mounted() {
     this.getComments();
   },
   methods: {
+    increaseVotes: function () {
+            this.post.votes++;
+        },
+    
+
     getComments() {
       let url =
         "http://localhost:3000/api/v1/topic/" +
@@ -213,6 +230,12 @@ export default {
     goBack() {
       this.$router.go(-1);
     }
+  },
+
+  computed: {
+        isHot: function () {
+            return this.post.votes >= 20;
+        }
   }
 };
 </script>

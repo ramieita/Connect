@@ -3,14 +3,23 @@
     <div id="nav">
     </div>
     <router-view/>
+    <UpVote></UpVote>
   </div>
 </template>
+
 <script>
+import UpVote from './components/UpVote'
 
 export default {
-
+  name: 'app',
+  components: {
+    UpVote
+  }
 }
+
 </script>
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
