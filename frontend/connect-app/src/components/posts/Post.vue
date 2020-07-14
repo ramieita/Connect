@@ -42,6 +42,9 @@
       <div class="card">
         <div class="card-header">
           <p>posted by: {{ p.postedBy.username }}</p>
+          <div class="image is-64x64">
+         <h2 class="first-char">{{p.postedBy.username.charAt(0)}}</h2>
+       </div>
         </div>
 
         <router-link class="link" :to="`${{url}}` + '/' + p._id">
@@ -289,4 +292,14 @@ h6 {
   font-size: 2em;
   background: blanchedalmond;
 }
+.is-64x64{
+  border: 2px solid rgb(61, 172, 129);
+  border-radius: 50%;
+  margin-left: 1.5%;
+}
+.first-char{
+  height: 62px;
+  line-height: 62px;
+  text-align: center;
+  }
 </style>
