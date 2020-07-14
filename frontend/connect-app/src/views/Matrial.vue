@@ -8,7 +8,7 @@
 					<div class="card">
 						<div class="card-block block-1">
 							<h3 class="card-title">Node.js</h3>
-							<p class="card-text">Node.js ist eine plattformübergreifende Open-Source-JavaScript-Laufzeitumgebung.</p>
+							<p class="card-text">Node.js ist eine plattformübergreifende<br> Open-Source-JavaScript-Laufzeitumgebung.<br><br> Damit kann zum Beispiel ein Webserver betrieben werden.</p>
 							<a target="_blank" href="https://nodejs.org/en/" title="Read more" class="read-more" >Read more <i class="fa fa-angle-double-right ml-2"></i> </a>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 					<div class="card">
 						<div class="card-block block-4">
 							<h3 class="card-title">Vue.js</h3>
-							<p class="card-text">Vue.js ist ein clientseitiges JavaScript-Webframework zum Erstellen von Single-Page-Webanwendungen.</p>
+							<p class="card-text">Vue.js ist ein clientseitiges JavaScript-Webframework zum Erstellen von SPA, kann auch in Multipage-Webseiten für einzelne Abschnitte verwendet werden.</p>
 							<a target="_blank" href="https://vuejs.org" title="Read more" class="read-more" >Read more<i class="fa fa-angle-double-right ml-2"></i></a>
 						</div>
 					</div>
