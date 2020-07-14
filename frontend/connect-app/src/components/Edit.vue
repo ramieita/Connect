@@ -30,17 +30,13 @@
    <small> please refresh the Site after the click on the Button </small>
   </form>
 </div>
-    <Calendar />
     </div>
 </template>
 <script>
- import Calendar from './Calendar'
 
 export default {  
   name: "EditProfile",
-  components: {
-    Calendar
-  },
+
   data() {
     return {
       id: "",

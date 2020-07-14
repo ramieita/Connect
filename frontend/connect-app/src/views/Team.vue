@@ -18,8 +18,8 @@
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Burak Kara</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Product Manager -<br> Frontend Developer</h6>
+              <p>What I like: xxx</p>
               <ul class="list-inline">
                  <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
               </ul>
@@ -39,8 +39,8 @@
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Mohamad Rami Eita</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Fullstack Developer</h6>
+              <p>YWhat I like: xxx</p>
               <ul class="list-inline">
                  <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
               </ul>
@@ -60,8 +60,8 @@
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Louis Cheung</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Frontend Developer</h6>
+              <p>What I like: xxx</p>
               <ul class="list-inline">
                 <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
               </ul>
@@ -92,8 +92,8 @@
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Maksym Olshanskyy</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Backend Developer</h6>
+              <p>What I like: xxx</p>
               <ul class="list-inline">
               <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
               </ul>
@@ -107,13 +107,13 @@
         <!-- Row -->
         <div class="row">
           <div class="col-md-12 ">
-            <img src="@/assets/img/person.jpg" alt="wrapkit" class="img-fluid rounded-circle" />
+            <img src="@/assets/img/taki-pic.png" alt="wrapkit" class="img-fluid rounded-circle" />
           </div>
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Hamzah Fayad</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Scrum Master - Full Stack Developer</h6>
+              <p>What I like: photography, art, coding, sports</p>
               <ul class="list-inline">
                
               <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -135,8 +135,8 @@
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Yide Xu</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Product Manager -<br> Backend Developer</h6>
+              <p>What I like: xxx</p>
               <ul class="list-inline">
               <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
               </ul>
@@ -157,8 +157,8 @@
           <div class="col-md-12 text-center">
             <div class="pt-2">
               <h5 class="mt-4 font-weight-medium mb-0">Muhammet Üresin</h5>
-              <h6 class="subtitle mb-3">Property Specialist</h6>
-              <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+              <h6 class="subtitle mb-3">Backend Developer</h6>
+              <p>What I like: xxx</p>
               <ul class="list-inline">
                
               <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>

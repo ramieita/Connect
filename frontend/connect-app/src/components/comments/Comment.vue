@@ -41,11 +41,6 @@
      <div class="container" >
 
     <article class="media">
-  <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
-  </figure>
   <div class="media-content">
     <div class="field">
       <p class="control">
@@ -71,9 +66,9 @@
     <div class="space">
      <article class="media">
       <figure class="media-left">
-       <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-       </p>
+       <div class="image is-64x64">
+         <h2 class="first-char">{{c.commentedBy.username.charAt(0)}}</h2>
+       </div>
       </figure>
        <div class="media-content">
         <div class="content">
@@ -382,4 +377,12 @@ textarea {
   background: rgb(57, 150, 114);
   color: white;
 }
+.is-64x64{
+  background:rgb(172, 241, 215);
+}
+.first-char{
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  }
 </style>

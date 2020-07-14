@@ -15,7 +15,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="bio-image">
-							<img src="https://image.ibb.co/f5Kehq/bio-image.jpg" alt="image" />
+              <h1 class="first-char">{{username.charAt(0)}}</h1>
+              <img class="profile-pic" src="@/assets/img/sea.jpg" alt="img">
 						</div>			
 					</div>
 				</div>	
@@ -76,6 +77,20 @@ export default {
 </script>
 
 <style scoped>
+
+.first-char{
+  position: absolute;
+  font-size: 8em;
+  font-weight: bold;
+  left: 250px;
+  top: 65px;
+  z-index: 99;
+  color: white;
+}
+
+.profile-pic{
+  opacity: 0.75;
+}
 
 .portfolio{
     padding:6%;
