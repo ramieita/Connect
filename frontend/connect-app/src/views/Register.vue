@@ -2,10 +2,11 @@
   <div>
     <div class="body">
       <h5>
-        By having a <strong>Connect</strong> account, you can join
+        By having a
+        <strong>Connect</strong> account, you can join
         supportive students for a better learning.
       </h5>
-      
+
       <b-form @submit.prevent="register">
         <b-form-group id="name">
           <b-form-input id="input1" v-model="name" required placeholder="Name"></b-form-input>
@@ -34,15 +35,15 @@
             placeholder="Confirm Password"
           ></b-form-input>
         </b-form-group>
-         <b-form-textarea
-      id="textarea-state"
-      v-model="text"
-      :state="text.length >= 100"
-      placeholder="Enter at least 10 words about you"
-      rows="3"
-      column ="2"
-    ></b-form-textarea>
-         <br>
+        <b-form-textarea
+          id="textarea-state"
+          v-model="text"
+          :state="text.length >= 100"
+          placeholder="Enter at least 10 words about you"
+          rows="3"
+          column="2"
+        ></b-form-textarea>
+        <br />
         <b-button id="btn" type="submit" variant="success">SIGN UP</b-button>
       </b-form>
       <aside>
@@ -51,23 +52,32 @@
       </aside>
       <p>By continuing, you agree to our User Agreement and Privacy Policy</p>
     </div>
-  <Matrial/>
-  <Team/>
-  <Footer />
+    <Matrial />
+    <Team />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Team from "./Team"
-import Matrial from "./Matrial"
-import Footer from "./FooterLanding"
+import Team from "./Team";
+import Matrial from "./Matrial";
+import Footer from "./FooterLanding";
+import passwordValidator from "password-validator"; //passwort-validator
+var schema = new passwordValidator();
+
+schema
+  .is()
+  .min(6)
+  .has()
+  .not()
+  .spaces();
+
 export default {
-  
   name: "Register",
   components: {
-   Team,
-   Matrial,
-   Footer
+    Team,
+    Matrial,
+    Footer
   },
   data() {
     return {
@@ -76,33 +86,39 @@ export default {
       email: "",
       password: "",
       confirm_password: "",
-      text: "",
+      text: ""
     };
   },
   methods: {
     register() {
-      let url = this.$store.state.url;
-      this.$http
-        .post(url + "signup", {
-          name: this.name,
-          username: this.username,
-          email: this.email,
-          password: this.password,
-          confirm_password: this.confirm_password,
-          text : this.text,
-        })
-        .then(res => {
-          if (res.data.success) {
-            localStorage.setItem("jwt", res.data.token);
-            localStorage.setItem("userId", res.data.id);
-            this.$swal("Success", "Registration was successful.", "success");
-            this.$router.push("/");
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          this.$swal("Error", "Something went wrong.", "error");
-        });
+      let password = document.getElementById("input4").value.trim();
+
+      if (!schema.validate(password)) {
+        alert("Password must be at least 6 characters long.");
+      } else {
+        let url = this.$store.state.url;
+        this.$http
+          .post(url + "signup", {
+            name: this.name,
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            confirm_password: this.confirm_password,
+            text: this.text
+          })
+          .then(res => {
+            if (res.data.success) {
+              localStorage.setItem("jwt", res.data.token);
+              localStorage.setItem("userId", res.data.id);
+              this.$swal("Success", "Registration was successful.", "success");
+              this.$router.push("/");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            this.$swal("Error", "Something went wrong.", "error");
+          });
+      }
     }
   }
 };
@@ -129,7 +145,8 @@ export default {
     background-position: 0% 50%;
   }
 }
-h5, aside{
+h5,
+aside {
   color: #242424;
 }
 p {
