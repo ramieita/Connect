@@ -13,9 +13,9 @@ Folgende Programme müssen installiert werden:
 
 **Wie fange ich an?**
 
-Entweder kann man online die Web-App benutzten unter folgendem Link: https://connect-beuth-app.herokuapp.com/
+Entweder kann man die Web-App benutzten unter folgendem Link: https://connect-beuth-app.herokuapp.com/
 
-Oder man lädt sich die Datei lokal über GitLab: https://gitlab.beuth-hochschule.de/connect/connect herunter. Sobald Sie es heruntergeladen und alle benötigten Programme installiert sind, öffnen Sie ein Terminal Ihrer Wahl und geben: 
+Oder man lädt sich die Datei lokal über GitLab: https://gitlab.beuth-hochschule.de/connect/connect herunter. Sobald Sie es heruntergeladen und alle benötigten Programme installiert haben, öffnen Sie ein Terminal Ihrer Wahl und geben: 
 
 ```
 npm install -g @vue/cli 
@@ -28,7 +28,7 @@ Zu erst geht man in das backend Verzeichnis mit:
 cd connect/backend
 ```
 
-Danach müssen alle benutzen Abhängigkeiten installiert werden mit:
+Danach müssen alle benutzten Abhängigkeiten installiert werden mit:
 
 ```
 npm install
